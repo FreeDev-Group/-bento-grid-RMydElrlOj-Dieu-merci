@@ -67,7 +67,7 @@ body {
   font-size: var(--font-size-body);
   line-height: var(--line-height);
   color: var(--clr-black);
-  background-color: var(--clr-purple-100);
+  background: linear-gradient(180deg, var(--clr-purple-100) 0%, hsl(254, 88%, 95%) 100%);
   min-height: 100vh;
 }
 
@@ -126,6 +126,18 @@ img {
 /* Hero section */
 .hero {
   margin-bottom: var(--spacing-lg);
+  animation: fadeInDown 0.6s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero__content {
@@ -138,12 +150,17 @@ img {
   font-weight: 500;
   line-height: var(--line-height-tight);
   color: var(--clr-black);
+  background: linear-gradient(135deg, var(--clr-black) 0%, hsl(0, 0%, 20%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero__subtitle {
   font-size: 1.125rem;
   font-weight: 500;
-  color: var(--clr-black);
+  color: var(--clr-gray);
+  letter-spacing: 0.3px;
 }
 
 /* Issue 3: CSS Grid for desktop (Bento layout) */
@@ -155,6 +172,22 @@ img {
   flex: 1;
   margin-bottom: var(--spacing-lg);
 }
+
+/* Staggered animation for cards */
+.card {
+  animation: fadeInUp 0.6s ease backwards;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.15s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.25s; }
+.card:nth-child(5) { animation-delay: 0.3s; }
+.card:nth-child(6) { animation-delay: 0.35s; }
+.card:nth-child(7) { animation-delay: 0.4s; }
+.card:nth-child(8) { animation-delay: 0.45s; }
+.card:nth-child(9) { animation-delay: 0.5s; }
+.card:nth-child(10) { animation-delay: 0.55s; }
 
 /* Grid positioning for each card (desktop layout) */
 /* Row 1 - Tall cards on left and right, normal on center */
@@ -222,15 +255,17 @@ img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.2s ease;
   min-height: 100%;
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Image styling within cards */
@@ -266,44 +301,98 @@ img {
 /* Different card background colors based on type */
 .card--platforms {
   background-color: var(--clr-purple-100);
+  border-color: rgba(102, 51, 153, 0.1);
+}
+
+.card--platforms:hover {
+  background-color: hsl(254, 88%, 85%);
 }
 
 .card--schedule {
   background-color: var(--clr-yellow-100);
+  border-color: rgba(204, 153, 51, 0.1);
+}
+
+.card--schedule:hover {
+  background-color: hsl(31, 66%, 88%);
 }
 
 .card--post {
   background-color: var(--clr-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card--post:hover {
+  background-color: hsl(0, 0%, 98%);
 }
 
 .card--timing {
   background-color: var(--clr-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card--timing:hover {
+  background-color: hsl(0, 0%, 98%);
 }
 
 .card--growth {
   background-color: var(--clr-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card--growth:hover {
+  background-color: hsl(0, 0%, 98%);
 }
 
 .card--reviews {
-  background-color: var(--clr-purple-500);
+  background: linear-gradient(135deg, var(--clr-purple-500) 0%, hsl(256, 67%, 50%) 100%);
   color: var(--clr-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card--reviews:hover {
+  background: linear-gradient(135deg, hsl(256, 67%, 55%) 0%, hsl(256, 67%, 45%) 100%);
+  box-shadow: 0 12px 24px rgba(102, 51, 153, 0.3);
 }
 
 .card--ai {
   background-color: var(--clr-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card--ai:hover {
+  background-color: hsl(0, 0%, 98%);
 }
 
 .card--ai-content {
-  background-color: var(--clr-yellow-500);
+  background: linear-gradient(135deg, var(--clr-yellow-500) 0%, hsl(39, 100%, 65%) 100%);
+  color: var(--clr-black);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card--ai-content:hover {
+  background: linear-gradient(135deg, hsl(39, 100%, 75%) 0%, hsl(39, 100%, 60%) 100%);
+  box-shadow: 0 12px 24px rgba(204, 153, 51, 0.25);
 }
 
 .card--audience {
   background-color: var(--clr-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card--audience:hover {
+  background-color: hsl(0, 0%, 98%);
 }
 
 .card--platforms-alt {
-  background-color: var(--clr-purple-500);
+  background: linear-gradient(135deg, var(--clr-purple-500) 0%, hsl(256, 67%, 50%) 100%);
   color: var(--clr-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card--platforms-alt:hover {
+  background: linear-gradient(135deg, hsl(256, 67%, 55%) 0%, hsl(256, 67%, 45%) 100%);
+  box-shadow: 0 12px 24px rgba(102, 51, 153, 0.3);
 }
 
 .card__title {
@@ -313,16 +402,49 @@ img {
   color: inherit;
 }
 
+.card--post .card__title,
+.card--timing .card__title,
+.card--growth .card__title,
+.card--ai .card__title,
+.card--audience .card__title {
+  color: var(--clr-black);
+}
+
+.card--reviews .card__title,
+.card--platforms-alt .card__title {
+  color: var(--clr-white);
+}
+
 .card__body {
   font-size: var(--font-size-body);
   line-height: var(--line-height);
   color: inherit;
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .card--reviews .card__body,
 .card--platforms-alt .card__body {
   color: var(--clr-white);
+  opacity: 0.95;
+}
+
+.card--post .card__body,
+.card--timing .card__body,
+.card--growth .card__body,
+.card--ai .card__body,
+.card--audience .card__body {
+  color: var(--clr-gray);
+}
+
+.card--platforms .card__body,
+.card--schedule .card__body {
+  color: hsl(0, 0%, 20%);
+  opacity: 0.9;
+}
+
+.card--ai-content .card__body {
+  color: hsl(0, 0%, 20%);
+  opacity: 0.9;
 }
 
 /* Attribution footer */
@@ -332,13 +454,27 @@ img {
   text-align: center;
   color: hsl(228, 45%, 44%);
   padding-top: var(--spacing-md);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: var(--spacing-md);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  animation: fadeInUp 0.6s ease 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .attribution a {
   color: var(--clr-purple-500);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: underline;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .attribution a:hover {
@@ -346,23 +482,24 @@ img {
   text-decoration: none;
 }
 
+.attribution a:focus-visible {
+  outline: 2px solid var(--clr-purple-500);
+  outline-offset: 2px;
+}
+
 /* Mobile responsiveness (prepared for Issue 5) */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  /* Tablet: 2-column layout, cards reflow naturally */
   .app {
-    padding: var(--spacing-sm);
+    padding: var(--spacing-md);
   }
 
-  .hero__title {
-    font-size: 1.75rem;
-  }
-
-  /* Mobile grid: 2 columns for now, will adjust for Issue 5 */
   .grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(140px, auto);
+    grid-auto-rows: minmax(160px, auto);
   }
 
-  /* Reset card positioning for mobile */
+  /* Reset explicit positioning for tablet */
   .card--platforms,
   .card--schedule,
   .card--post,
@@ -379,30 +516,130 @@ img {
 
   .card {
     padding: var(--spacing-md);
-    min-height: 140px;
+    min-height: 160px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  /* Mobile: 1-column layout, left cards naturally move to bottom */
   .app {
     padding: var(--spacing-sm);
   }
 
   .hero__title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1rem;
   }
 
   .grid {
     grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     gap: var(--spacing-sm);
   }
 
   .card {
+    padding: var(--spacing-md);
     min-height: auto;
+  }
+
+  .card__image {
+    max-width: 60px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card--platforms .card__image,
+  .card--post .card__image,
+  .card--reviews .card__image {
+    max-width: 80px;
+  }
+
+  /* Adjust animations for mobile */
+  .card {
+    animation: fadeInUp 0.5s ease backwards !important;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.05s !important; }
+  .card:nth-child(2) { animation-delay: 0.1s !important; }
+  .card:nth-child(3) { animation-delay: 0.15s !important; }
+  .card:nth-child(4) { animation-delay: 0.2s !important; }
+  .card:nth-child(5) { animation-delay: 0.25s !important; }
+  .card:nth-child(6) { animation-delay: 0.3s !important; }
+  .card:nth-child(7) { animation-delay: 0.35s !important; }
+  .card:nth-child(8) { animation-delay: 0.4s !important; }
+  .card:nth-child(9) { animation-delay: 0.45s !important; }
+  .card:nth-child(10) { animation-delay: 0.5s !important; }
+}
+
+@media (max-width: 480px) {
+  /* Phone: Smaller spacing and fonts */
+  .app {
+    padding: var(--spacing-xs);
+  }
+
+  .hero {
+    margin-bottom: var(--spacing-md);
+    animation: fadeInDown 0.5s ease;
+  }
+
+  .hero__title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+    background: linear-gradient(135deg, var(--clr-black) 0%, hsl(0, 0%, 25%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .grid {
+    gap: var(--spacing-xs);
+  }
+
+  .card {
     padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .card__title {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .card__body {
+    font-size: 0.9375rem;
+  }
+
+  .card__image {
+    max-width: 50px;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .attribution {
+    font-size: 0.8125rem;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
   }
 }
 
 /* Issue 3: CSS Grid for desktop → completed */
 
 /* Issue 4: Add images and content → completed */
+
+/* Issue 5: Responsive mobile design → completed */
+
+/* Issue 6: Polish the styles → completed */
