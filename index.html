@@ -2,84 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Bento grid</title>
-
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <!-- Issue 1: Semantic HTML structure -->
   <main class="app">
-    <header class="hero" role="banner">
-      <div class="hero__content">
-        <h1 class="hero__title">Social Media 10× Faster with AI</h1>
-        <p class="hero__subtitle">Over 4,000 5‑star reviews</p>
-      </div>
-    </header>
-
     <!-- Issue 4: Add images and content -->
     <section class="grid" aria-label="Feature grid">
-      <!-- card 1 -->
-      <article class="card card--platforms" aria-label="Manage multiple accounts and platforms">
-        <img src="./assets/images/illustration-multiple-platforms.webp" alt="Multiple platforms illustration" class="card__image">
-        <h2 class="card__title">Manage multiple accounts</h2>
-        <p class="card__body">Keep all your social channels in one place and post with confidence.</p>
+      
+      <!-- Card 1: Create and schedule (top left) -->
+      <article class="card card--create" aria-label="Create and schedule content quicker">
+        <h2 class="card__title">Create and schedule content <span class="text-highlight">quicker.</span></h2>
+        <button class="card__btn">Create Post ✨</button>
       </article>
 
-      <article class="card card--schedule" aria-label="Maintain a consistent posting schedule">
-        <img src="./assets/images/illustration-consistent-schedule.webp" alt="Consistent schedule illustration" class="card__image">
-        <h2 class="card__title">Maintain a consistent schedule</h2>
-        <p class="card__body">Plan ahead and keep your audience engaged with regular posts.</p>
+      <!-- Card 2: Hero (center top) -->
+      <article class="card card--hero" aria-label="Social Media 10x Faster with AI">
+        <h1 class="card__hero-title">Social Media <span class="text-highlight">10x</span><br>Faster with AI</h1>
+        <div class="card__stars">⭐⭐⭐⭐⭐</div>
+        <p class="card__subtitle">Over 4,000 5-star reviews</p>
       </article>
 
-      <article class="card card--post" aria-label="Create and schedule posts">
-        <img src="./assets/images/illustration-create-post.webp" alt="Create post illustration" class="card__image">
-        <h2 class="card__title">Create and schedule posts</h2>
-        <p class="card__body">Write once and publish everywhere with one click.</p>
+      <!-- Card 3: Schedule to social media (top right) -->
+      <article class="card card--schedule-social" aria-label="Schedule to social media">
+        <h2 class="card__title">Schedule to<br>social media.</h2>
       </article>
 
-      <article class="card card--timing" aria-label="Optimize post timing">
-        <img src="./assets/images/illustration-schedule-posts.webp" alt="Schedule posts illustration" class="card__image">
-        <h2 class="card__title">Optimize post timing</h2>
-        <p class="card__body">Publish at the perfect moment to reach more people.</p>
+      <!-- Card 4: Best Time to Post (right column) -->
+      <article class="card card--best-time" aria-label="Best Time to Post">
+        <h2 class="card__title">Best Time to Post</h2>
+        <img src="./assets/images/illustration-schedule-posts.webp" alt="Schedule chart" class="card__image">
+        <p class="card__caption">Most Active</p>
       </article>
 
-      <article class="card card--growth" aria-label="Grow followers with non-stop content">
-        <img src="./assets/images/illustration-grow-followers.webp" alt="Grow followers illustration" class="card__image">
-        <h2 class="card__title">Grow followers</h2>
-        <p class="card__body">Use consistent posting to keep your audience growing every day.</p>
+      <!-- Card 5: Optimize post timings (right column) -->
+      <article class="card card--optimize-timing" aria-label="Optimize post timings">
+        <p class="card__body">Optimize post timings to publish content at the perfect time for your audience.</p>
       </article>
 
-      <article class="card card--reviews" aria-label="Over 4,000 five-star reviews">
-        <img src="./assets/images/illustration-five-stars.webp" alt="Five stars illustration" class="card__image">
-        <h2 class="card__title">Trusted by thousands</h2>
-        <p class="card__body">Rated 5 stars by more than 4,000 users.</p>
+      <!-- Card 6: Write your content (bottom left, large) -->
+      <article class="card card--write-ai" aria-label="Write your content using AI">
+        <h2 class="card__title">Write your<br>content<br>using AI.</h2>
+        <img src="./assets/images/illustration-ai-content.webp" alt="AI content" class="card__image-lg">
       </article>
 
-      <article class="card card--ai" aria-label="Write your content using AI">
-        <h2 class="card__title">Write with AI</h2>
-        <p class="card__body">Generate content ideas, captions and posts in seconds.</p>
+      <!-- Card 7: Manage multiple accounts (middle bottom) -->
+      <article class="card card--manage" aria-label="Manage multiple accounts and platforms">
+        <h2 class="card__title">Manage multiple accounts and platforms.</h2>
+        <img src="./assets/images/illustration-multiple-platforms.webp" alt="Multiple platforms" class="card__image-sm">
       </article>
 
-      <article class="card card--ai-content" aria-label="AI-powered content suggestions">
-        <img src="./assets/images/illustration-ai-content.webp" alt="AI content illustration" class="card__image">
-        <h2 class="card__title">AI content suggestions</h2>
-        <p class="card__body">Get smart copy recommendations that match your brand voice.</p>
+      <!-- Card 8: 56% faster growth (middle bottom) -->
+      <article class="card card--growth-stat" aria-label="56% faster audience growth">
+        <h2 class="card__title"><span class="text-large">>56%</span><br>faster audience growth</h2>
+        <div class="card__avatars">
+          <img src="./assets/images/illustration-audience-growth.webp" alt="Growth illustration" class="avatar">
+        </div>
       </article>
 
-      <article class="card card--audience" aria-label="Track audience growth">
-        <img src="./assets/images/illustration-audience-growth.webp" alt="Audience growth illustration" class="card__image">
-        <h2 class="card__title">Track audience growth</h2>
-        <p class="card__body">See how your following grows with every post.</p>
+      <!-- Card 9: Maintain consistent (bottom right, large) -->
+      <article class="card card--maintain" aria-label="Maintain a consistent posting schedule">
+        <h2 class="card__title">Maintain a consistent posting schedule.</h2>
+        <img src="./assets/images/illustration-consistent-schedule.webp" alt="Schedule" class="card__image-md">
       </article>
 
-      <article class="card card--platforms-alt" aria-label="Publish to multiple platforms">
-        <h2 class="card__title">Post on multiple platforms</h2>
-        <p class="card__body">One workflow, everywhere: Twitter, Facebook, Instagram and more.</p>
+      <!-- Card 10: Grow followers (far bottom right, large) -->
+      <article class="card card--grow" aria-label="Grow followers with non-stop content">
+        <h2 class="card__title">Grow followers with non-stop content.</h2>
+        <img src="./assets/images/illustration-grow-followers.webp" alt="Grow followers" class="card__image">
       </article>
+
     </section>
 
     <footer class="attribution">
