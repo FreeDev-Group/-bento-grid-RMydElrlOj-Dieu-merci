@@ -111,6 +111,8 @@ img {
   display: block;
 }
 
+/* Issue 2: Fonts and base styles → completed */
+
 /* Layout container */
 .app {
   min-height: 100vh;
@@ -144,12 +146,68 @@ img {
   color: var(--clr-black);
 }
 
-/* Grid container (prepared for Issue 3) */
+/* Issue 3: CSS Grid for desktop (Bento layout) */
 .grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(160px, auto);
   gap: var(--spacing-md);
   flex: 1;
   margin-bottom: var(--spacing-lg);
+}
+
+/* Grid positioning for each card (desktop layout) */
+/* Row 1 */
+.card--platforms {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.card--schedule {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.card--post {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+}
+
+.card--timing {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+/* Row 2 */
+.card--growth {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.card--reviews {
+  grid-column: 4 / 5;
+  grid-row: 2 / 4;
+}
+
+/* Row 3 */
+.card--ai {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+}
+
+.card--ai-content {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+.card--audience {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+
+.card--platforms-alt {
+  grid-column: 1 / 2;
+  grid-row: 4 / 5;
 }
 
 /* Card styles */
@@ -164,6 +222,8 @@ img {
   text-align: center;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 160px;
+  width: 100%;
 }
 
 .card:hover {
@@ -264,9 +324,51 @@ img {
     font-size: 1.75rem;
   }
 
+  /* Mobile grid: 2 columns for now, will adjust for Issue 5 */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(140px, auto);
+  }
+
+  /* Reset card positioning for mobile */
+  .card--platforms,
+  .card--schedule,
+  .card--post,
+  .card--timing,
+  .card--growth,
+  .card--reviews,
+  .card--ai,
+  .card--ai-content,
+  .card--audience,
+  .card--platforms-alt {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .card {
     padding: var(--spacing-md);
+    min-height: 140px;
   }
 }
 
-/* Issue 2: Fonts and base styles → completed */
+@media (max-width: 480px) {
+  .app {
+    padding: var(--spacing-sm);
+  }
+
+  .hero__title {
+    font-size: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-sm);
+  }
+
+  .card {
+    min-height: auto;
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Issue 3: CSS Grid for desktop → completed */
