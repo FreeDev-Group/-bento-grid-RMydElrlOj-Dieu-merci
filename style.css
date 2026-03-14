@@ -150,14 +150,14 @@ img {
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: minmax(160px, auto);
+  grid-auto-rows: minmax(180px, auto);
   gap: var(--spacing-md);
   flex: 1;
   margin-bottom: var(--spacing-lg);
 }
 
 /* Grid positioning for each card (desktop layout) */
-/* Row 1 */
+/* Row 1 - Tall cards on left and right, normal on center */
 .card--platforms {
   grid-column: 1 / 2;
   grid-row: 1 / 3;
@@ -178,7 +178,7 @@ img {
   grid-row: 1 / 2;
 }
 
-/* Row 2 */
+/* Row 2 - Wide card in middle, tall card on right */
 .card--growth {
   grid-column: 2 / 4;
   grid-row: 2 / 3;
@@ -189,7 +189,7 @@ img {
   grid-row: 2 / 4;
 }
 
-/* Row 3 */
+/* Row 3 - Three normal cards */
 .card--ai {
   grid-column: 1 / 2;
   grid-row: 3 / 4;
@@ -205,6 +205,7 @@ img {
   grid-row: 3 / 4;
 }
 
+/* Row 4 - Single card at bottom left */
 .card--platforms-alt {
   grid-column: 1 / 2;
   grid-row: 4 / 5;
@@ -214,7 +215,7 @@ img {
 .card {
   background-color: var(--clr-white);
   border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,13 +223,44 @@ img {
   text-align: center;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  min-height: 160px;
+  min-height: 100%;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styling within cards */
+.card__image {
+  width: 100%;
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+/* Cards with taller rows get bigger images */
+.card--platforms .card__image,
+.card--post .card__image,
+.card--reviews .card__image {
+  max-width: 100px;
+}
+
+/* Some cards don't have images, adjust spacing */
+.card--ai {
+  padding: var(--spacing-lg) var(--spacing-md);
+  justify-content: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.card--platforms-alt {
+  padding: var(--spacing-lg) var(--spacing-md);
+  justify-content: flex-start;
+  gap: var(--spacing-sm);
 }
 
 /* Different card background colors based on type */
@@ -372,3 +404,5 @@ img {
 }
 
 /* Issue 3: CSS Grid for desktop → completed */
+
+/* Issue 4: Add images and content → completed */
