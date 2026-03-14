@@ -1,0 +1,108 @@
+/* Issue 2: Polices et styles de base */
+:root {
+  --clr-purple-100: hsl(254, 88%, 90%);
+  --clr-purple-500: hsl(256, 67%, 59%);
+
+  --clr-yellow-100: hsl(31, 66%, 93%);
+  --clr-yellow-500: hsl(39, 100%, 71%);
+
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-black: hsl(0, 0%, 7%);
+
+  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-size: 18px;
+  --line-height: 1.6;
+}
+
+/* Use local fonts (files provided in /assets/fonts) */
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/static/DMSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("./assets/fonts/static/DMSans-Medium.ttf") format("truetype");
+}
+
+/* Global reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  color: var(--clr-black);
+  background-color: var(--clr-purple-100);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Basic layout helpers */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.hero {
+  max-width: 520px;
+}
+
+.hero__title {
+  margin: 0 0 0.75rem;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.hero__subtitle {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: hsl(0, 0%, 25%);
+}
+
+.content {
+  margin-top: 2rem;
+  max-width: 560px;
+}
+
+.content p {
+  margin: 0 0 1rem;
+}
+
+.attribution {
+  margin-top: auto;
+  font-size: 0.75rem;
+  text-align: center;
+  color: hsl(228, 45%, 44%);
+}
+
+.attribution a {
+  color: inherit;
+  font-weight: 500;
+}

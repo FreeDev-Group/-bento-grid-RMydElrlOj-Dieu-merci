@@ -8,35 +8,77 @@
   
   <title>Frontend Mentor | Bento grid</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <!-- Issue 1: Structure HTML sémantique -->
+  <main class="app">
+    <header class="hero" role="banner">
+      <div class="hero__content">
+        <h1 class="hero__title">Social Media 10× Faster with AI</h1>
+        <p class="hero__subtitle">Over 4,000 5‑star reviews</p>
+      </div>
+    </header>
 
-  Social Media 10x Faster with AI
-  Over 4,000 5-star reviews
+    <!-- Issue 3: Grille CSS (10 cartes) -->
+    <section class="grid" aria-label="Feature grid">
+      <!-- carte 1 -->
+      <article class="card card--platforms" aria-label="Manage multiple accounts and platforms">
+        <h2 class="card__title">Manage multiple accounts</h2>
+        <p class="card__body">Keep all your social channels in one place and post with confidence.</p>
+      </article>
 
-  Manage multiple accounts and platforms.
+      <article class="card card--schedule" aria-label="Maintain a consistent posting schedule">
+        <h2 class="card__title">Maintain a consistent schedule</h2>
+        <p class="card__body">Plan ahead and keep your audience engaged with regular posts.</p>
+      </article>
 
-  Maintain a consistent posting schedule.
+      <article class="card card--post" aria-label="Create and schedule posts">
+        <h2 class="card__title">Create and schedule posts</h2>
+        <p class="card__body">Write once and publish everywhere with one click.</p>
+      </article>
 
-  Schedule to social media.
-  Optimize post timings to publish content at the perfect time for your audience.
-  
-  Grow followers with non-stop content.
+      <article class="card card--timing" aria-label="Optimize post timing">
+        <h2 class="card__title">Optimize post timing</h2>
+        <p class="card__body">Publish at the perfect moment to reach more people.</p>
+      </article>
 
-  >56% faster audience growth
-  
-  Create and schedule content quicker.
+      <article class="card card--growth" aria-label="Grow followers with non-stop content">
+        <h2 class="card__title">Grow followers</h2>
+        <p class="card__body">Use consistent posting to keep your audience growing every day.</p>
+      </article>
 
-  Write your content using AI.
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+      <article class="card card--reviews" aria-label="Over 4,000 five-star reviews">
+        <h2 class="card__title">Trusted by thousands</h2>
+        <p class="card__body">Rated 5 stars by more than 4,000 users.</p>
+      </article>
+
+      <article class="card card--ai" aria-label="Write your content using AI">
+        <h2 class="card__title">Write with AI</h2>
+        <p class="card__body">Generate content ideas, captions and posts in seconds.</p>
+      </article>
+
+      <article class="card card--ai-content" aria-label="AI-powered content suggestions">
+        <h2 class="card__title">AI content suggestions</h2>
+        <p class="card__body">Get smart copy recommendations that match your brand voice.</p>
+      </article>
+
+      <article class="card card--audience" aria-label="Track audience growth">
+        <h2 class="card__title">Track audience growth</h2>
+        <p class="card__body">See how your following grows with every post.</p>
+      </article>
+
+      <article class="card card--platforms-alt" aria-label="Publish to multiple platforms">
+        <h2 class="card__title">Post on multiple platforms</h2>
+        <p class="card__body">One workflow, everywhere: Twitter, Facebook, Instagram and more.</p>
+      </article>
+    </section>
+
+    <footer class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">MUGISHO NTASHARA MERCI</a>.
+    </footer>
+  </main>
+  <!-- Issue 1: Structure HTML → terminé -->
 </body>
 </html>
