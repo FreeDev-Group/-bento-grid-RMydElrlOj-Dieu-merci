@@ -1,5 +1,6 @@
-/* Issue 2: Polices et styles de base */
+/* Issue 2: Fonts and base styles */
 :root {
+  /* Colors */
   --clr-purple-100: hsl(254, 88%, 90%);
   --clr-purple-500: hsl(256, 67%, 59%);
 
@@ -8,13 +9,31 @@
 
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(0, 0%, 7%);
+  --clr-gray: hsl(0, 0%, 25%);
 
+  /* Typography */
   --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-size: 18px;
-  --line-height: 1.6;
+  --font-size-body: 18px;
+  --font-size-lg: 32px;
+  --font-size-md: 24px;
+  --font-size-sm: 14px;
+  --line-height: 1.5;
+  --line-height-tight: 1.2;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
-/* Use local fonts (files provided in /assets/fonts) */
+/* Import local fonts (DM Sans - weights 400, 500) */
 @font-face {
   font-family: "DM Sans";
   font-weight: 400;
@@ -33,76 +52,221 @@
 
 /* Global reset and base styles */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 body {
   font-family: var(--font-sans);
-  font-size: var(--font-size);
+  font-size: var(--font-size-body);
   line-height: var(--line-height);
   color: var(--clr-black);
   background-color: var(--clr-purple-100);
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: var(--line-height-tight);
+}
+
+h1 {
+  font-size: var(--font-size-lg);
+}
+
+h2 {
+  font-size: var(--font-size-md);
+}
+
+p {
+  margin: 0;
+  color: var(--clr-gray);
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--clr-purple-500);
+  outline-offset: 2px;
+}
+
+a:hover {
+  opacity: 0.8;
 }
 
 img {
   max-width: 100%;
+  height: auto;
   display: block;
 }
 
-/* Basic layout helpers */
+/* Layout container */
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: var(--spacing-md);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
+/* Hero section */
 .hero {
-  max-width: 520px;
+  margin-bottom: var(--spacing-lg);
 }
 
-.hero__title {
-  margin: 0 0 0.75rem;
-  font-size: 2.25rem;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-.hero__subtitle {
-  margin: 0;
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: hsl(0, 0%, 25%);
-}
-
-.content {
-  margin-top: 2rem;
+.hero__content {
   max-width: 560px;
 }
 
-.content p {
-  margin: 0 0 1rem;
+.hero__title {
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  line-height: var(--line-height-tight);
+  color: var(--clr-black);
 }
 
+.hero__subtitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--clr-black);
+}
+
+/* Grid container (prepared for Issue 3) */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+  flex: 1;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Card styles */
+.card {
+  background-color: var(--clr-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Different card background colors based on type */
+.card--platforms {
+  background-color: var(--clr-purple-100);
+}
+
+.card--schedule {
+  background-color: var(--clr-yellow-100);
+}
+
+.card--post {
+  background-color: var(--clr-white);
+}
+
+.card--timing {
+  background-color: var(--clr-white);
+}
+
+.card--growth {
+  background-color: var(--clr-white);
+}
+
+.card--reviews {
+  background-color: var(--clr-purple-500);
+  color: var(--clr-white);
+}
+
+.card--ai {
+  background-color: var(--clr-white);
+}
+
+.card--ai-content {
+  background-color: var(--clr-yellow-500);
+}
+
+.card--audience {
+  background-color: var(--clr-white);
+}
+
+.card--platforms-alt {
+  background-color: var(--clr-purple-500);
+  color: var(--clr-white);
+}
+
+.card__title {
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  margin-bottom: var(--spacing-sm);
+  color: inherit;
+}
+
+.card__body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height);
+  color: inherit;
+  opacity: 0.9;
+}
+
+.card--reviews .card__body,
+.card--platforms-alt .card__body {
+  color: var(--clr-white);
+}
+
+/* Attribution footer */
 .attribution {
   margin-top: auto;
-  font-size: 0.75rem;
+  font-size: var(--font-size-sm);
   text-align: center;
   color: hsl(228, 45%, 44%);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .attribution a {
-  color: inherit;
+  color: var(--clr-purple-500);
   font-weight: 500;
+  text-decoration: underline;
 }
+
+.attribution a:hover {
+  color: var(--clr-black);
+  text-decoration: none;
+}
+
+/* Mobile responsiveness (prepared for Issue 5) */
+@media (max-width: 768px) {
+  .app {
+    padding: var(--spacing-sm);
+  }
+
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .card {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Issue 2: Fonts and base styles → completed */
