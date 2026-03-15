@@ -1,142 +1,117 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/images/favicon-32x32.png"
-    />
-    <title>Frontend Mentor | Bento grid</title>
-    <meta name="description" content="Bento grid challenge by Frontend Mentor" />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <main class="app">
-      <section class="grid" aria-label="Feature bento grid">
 
-        <!-- Card 1: Create and schedule — col 1, row 1 -->
-        <article class="card card--create">
-          <h2 class="card__title">
-            Create and schedule content <em class="highlight">quicker.</em>
-          </h2>
-          <img
-            src="./assets/images/illustration-create-post.webp"
-            alt="Create post illustration"
-            class="card__img card__img--create"
-          />
-        </article>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Frontend Mentor | Bento grid</title>
+  <meta name="description" content="Bento grid challenge by Frontend Mentor" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
 
-        <!-- Card 2: Hero — col 2-3, row 1 -->
-        <article class="card card--hero">
-          <h1 class="card__hero-title">
-            Social Media <span class="highlight-yellow">10x</span>
-            <em>Faster</em> with AI
-          </h1>
-          <img
-            src="./assets/images/illustration-five-stars.webp"
-            alt="Five stars"
-            class="card__img card__img--stars"
-          />
-          <p class="card__hero-sub">Over 4,000 5-star reviews</p>
-        </article>
+<body>
+  <main class="app">
+    <section class="grid" aria-label="Feature bento grid">
 
-        <!-- Card 3: Schedule to social media — col 4, row 1-2 -->
-        <article class="card card--schedule-social">
-          <h2 class="card__title">Schedule to social media.</h2>
-          
-          <img
-            src="./assets/images/illustration-schedule-posts.webp"
-            alt="Best Time to Post chart"
-            class="card__img card__img--schedule-posts"
-          />
+      <!-- Card 1: Create and schedule — col 1, row 1 -->
+      <article class="card card--create">
+        <h2 class="card__title">
+          Create and schedule content <em class="highlight">quicker.</em>
+        </h2>
+        <img src="./assets/images/illustration-create-post.webp" alt="Create post illustration"
+          class="card__img card__img--create" />
+      </article>
 
-          <p class="card__body">
-            Optimize post timings to publish content at the perfect time for
-            your audience.
-          </p>
-        </article>
+      <!-- Card 2: Hero — col 2-3, row 1 -->
+      <article class="card card--hero">
+        <h1 class="card__hero-title">
+          Social Media <span class="highlight-yellow">10x</span>
+          <em>Faster</em> with AI
+        </h1>
+        <img src="./assets/images/illustration-five-stars.webp" alt="Five stars" class="card__img card__img--stars" />
+        <p class="card__hero-sub">Over 4,000 5-star reviews</p>
+      </article>
 
-        <!-- Card 4: Manage multiple accounts — col 2, row 2 -->
-        <article class="card card--manage">
-          <!-- User's custom HTML badges to be styled properly -->
-          <div class="card__platforms">
-            <div class="platform-badge platform-badge--ig">
-              <span class="platform-icon platform-ig">&#128247;</span>
-              <div>
-                <div class="platform-name">Ir mugisho merci</div>
-                <div class="platform-followers">12K Followers</div>
-              </div>
-            </div>
-            <div class="platform-badge platform-badge--x">
-              <span class="platform-icon platform-x">&#10005;</span>
-              <div>
-                <div class="platform-name">Ir mugisho merci</div>
-                <div class="platform-followers">8K Followers</div>
-              </div>
-            </div>
-            <div class="platform-badge platform-badge--fb">
-              <span class="platform-icon platform-fb">f</span>
-              <div>
-                <div class="platform-name">Ir mugisho merci</div>
-                <div class="platform-followers">5K Followers</div>
-              </div>
+      <!-- Card 3: Schedule to social media — col 4, row 1-2 -->
+      <article class="card card--schedule-social">
+        <h2 class="card__title">Schedule to social media.</h2>
+
+        <img src="./assets/images/illustration-schedule-posts.webp" alt="Best Time to Post chart"
+          class="card__img card__img--schedule-posts" />
+
+        <p class="card__body">
+          Optimize post timings to publish content at the perfect time for
+          your audience.
+        </p>
+      </article>
+
+      <!-- Card 4: Manage multiple accounts — col 2, row 2 -->
+      <article class="card card--manage">
+        <!-- User's custom HTML badges to be styled properly -->
+        <div class="card__platforms">
+          <div class="platform-badge platform-badge--ig">
+            <span class="platform-icon platform-ig">&#128247;</span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">12K Followers</div>
             </div>
           </div>
-          <h2 class="card__title">Manage multiple accounts and platforms.</h2>
-        </article>
+          <div class="platform-badge platform-badge--x">
+            <span class="platform-icon platform-x">&#10005;</span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">8K Followers</div>
+            </div>
+          </div>
+          <div class="platform-badge platform-badge--fb">
+            <span class="platform-icon platform-fb">f</span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">5K Followers</div>
+            </div>
+          </div>
+        </div>
+        <h2 class="card__title">Manage multiple accounts and platforms.</h2>
+      </article>
 
-        <!-- Card 5: Maintain a consistent posting schedule — col 3, row 2 -->
-        <article class="card card--maintain">
-          <h2 class="card__title">Maintain a consistent posting schedule.</h2>
-          <img
-            src="./assets/images/illustration-consistent-schedule.webp"
-            alt="Consistent schedule calendar"
-            class="card__img card__img--schedule"
-          />
-        </article>
+      <!-- Card 5: Maintain a consistent posting schedule — col 3, row 2 -->
+      <article class="card card--maintain">
+        <h2 class="card__title">Maintain a consistent posting schedule.</h2>
+        <img src="./assets/images/illustration-consistent-schedule.webp" alt="Consistent schedule calendar"
+          class="card__img card__img--schedule" />
+      </article>
 
-        <!-- Card 6: Write your content using AI — col 1, row 2-3 -->
-        <article class="card card--write-ai">
-          <h2 class="card__title">Write your content using AI.</h2>
-          <img
-            src="./assets/images/illustration-ai-content.webp"
-            alt="AI content writing chat bubbles"
-            class="card__img card__img--ai"
-          />
-        </article>
+      <!-- Card 6: Write your content using AI — col 1, row 2-3 -->
+      <article class="card card--write-ai">
+        <h2 class="card__title">Write your content using AI.</h2>
+        <img src="./assets/images/illustration-ai-content.webp" alt="AI content writing chat bubbles"
+          class="card__img card__img--ai" />
+      </article>
 
-        <!-- Card 7: 56% faster audience growth — col 2, row 3 -->
-        <article class="card card--growth-stat">
-          <p class="card__stat">&gt;56%</p>
-          <p class="card__stat-label">faster audience growth</p>
-          <img
-            src="./assets/images/illustration-audience-growth.webp"
-            alt="Audience growth avatars"
-            class="card__img card__img--avatars"
-          />
-        </article>
+      <!-- Card 7: 56% faster audience growth — col 2, row 3 -->
+      <article class="card card--growth-stat">
+        <p class="card__stat">&gt;56%</p>
+        <p class="card__stat-label">faster audience growth</p>
+        <img src="./assets/images/illustration-audience-growth.webp" alt="Audience growth avatars"
+          class="card__img card__img--avatars" />
+      </article>
 
-        <!-- Card 8: Grow followers — col 3-4, row 3 -->
-        <article class="card card--grow">
-          <img
-            src="./assets/images/illustration-grow-followers.webp"
-            alt="Follower growth chart"
-            class="card__img card__img--grow"
-          />
-          <h2 class="card__title">Grow followers with non-stop content.</h2>
-        </article>
+      <!-- Card 8: Grow followers — col 3-4, row 3 -->
+      <article class="card card--grow">
+        <img src="./assets/images/illustration-grow-followers.webp" alt="Follower growth chart"
+          class="card__img card__img--grow" />
+        <h2 class="card__title">Grow followers with non-stop content.</h2>
+      </article>
 
-      </section>
+    </section>
 
-      <footer class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by <a href="#">MUGISHO NTASHARA MERCI</a>.
-      </footer>
-    </main>
-  </body>
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>. Coded by <a
+        href="#">MUGISHO NTASHARA MERCI</a>.
+    </footer>
+  </main>
+</body>
+
 </html>

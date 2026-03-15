@@ -64,7 +64,7 @@
 html,
 body {
   height: 100%;
-  overflow-x: hidden;
+overflow: hidden;
 }
 
 body {
@@ -79,7 +79,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 2rem 1rem;
-  padding-top: 1rem;
+  overflow: hidden;
 }
 
 img {
@@ -109,6 +109,7 @@ em {
   gap: 1.5rem;
   justify-content: center;
   padding-top: 20px;
+  overflow: hidden;
 }
 
 /* ================================
@@ -116,10 +117,16 @@ em {
 ================================ */
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1.55fr 1.35fr 1.25fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "create hero hero schedule-social"
+    "write-ai manage maintain schedule-social"
+    "write-ai growth-stat grow grow";
   gap: var(--gap);
   align-items: stretch;
+  overflow: hidden;
+  flex: 1;
 }
 
 /* ================================
@@ -132,6 +139,8 @@ em {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+
 }
 
 .card__title {
@@ -146,8 +155,7 @@ em {
    Col 1 / Row 1
 ================================ */
 .card--create {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: create;
   background-color: var(--clr-yellow-100);
   justify-content: center;
   align-items: flex-start;
@@ -172,8 +180,7 @@ em {
    Col 2-3 / Row 1
 ================================ */
 .card--hero {
-  grid-column: 2 / 4;
-  grid-row: 1;
+  grid-area: hero;
   background-color: var(--clr-purple-500);
   align-items: center;
   justify-content: center;
@@ -210,8 +217,7 @@ em {
    Col 4 / Row 1-2
 ================================ */
 .card--schedule-social {
-  grid-column: 4;
-  grid-row: 1 / 3;
+  grid-area: schedule-social;
   background-color: var(--clr-purple-100);
   gap: 1.5rem;
   justify-content: flex-start;
@@ -237,8 +243,7 @@ em {
    Col 2 / Row 2
 ================================ */
 .card--manage {
-  grid-column: 2;
-  grid-row: 2;
+  grid-area: manage;
   background-color: var(--clr-white);
   gap: 1.5rem;
   overflow: hidden; /* Prevent horizontal scroll */
@@ -261,7 +266,7 @@ em {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   position: absolute;
   /* Width calc so it doesn't break out of the card container */
-  width: calc(100% + 2rem);
+  width: 100%; 
 }
 
 .platform-badge--ig {
@@ -334,8 +339,7 @@ em {
    Col 3 / Row 2
 ================================ */
 .card--maintain {
-  grid-column: 3;
-  grid-row: 2;
+  grid-area: maintain;
   background-color: var(--clr-yellow-500);
   justify-content: flex-start;
   gap: 1.5rem;
@@ -357,8 +361,7 @@ em {
    Col 1 / Row 2-3
 ================================ */
 .card--write-ai {
-  grid-column: 1;
-  grid-row: 2 / 4;
+  grid-area: write-ai;
   background-color: var(--clr-yellow-500);
   justify-content: flex-start;
   gap: 1.5rem;
@@ -381,8 +384,7 @@ em {
    Col 2 / Row 3
 ================================ */
 .card--growth-stat {
-  grid-column: 2;
-  grid-row: 3;
+  grid-area: growth-stat;
   background-color: var(--clr-white);
   justify-content: flex-start;
   gap: 0.5rem;
@@ -412,8 +414,7 @@ em {
    Col 3-4 / Row 3
 ================================ */
 .card--grow {
-  grid-column: 3 / 5;
-  grid-row: 3;
+  grid-area: grow;
   background-color: var(--clr-purple-500);
   flex-direction: row;
   align-items: center;
@@ -455,17 +456,37 @@ em {
 ================================ */
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: unset;
+    grid-auto-rows: auto;
   }
-  .card--create          { grid-column: 1; grid-row: auto; }
-  .card--hero            { grid-column: 1 / 3; grid-row: auto; }
-  .card--schedule-social { grid-column: 2; grid-row: auto; }
-  .card--manage          { grid-column: 1; grid-row: auto; }
-  .card--maintain        { grid-column: 2; grid-row: auto; }
-  .card--write-ai        { grid-column: 1; grid-row: auto; }
-  .card--growth-stat     { grid-column: 2; grid-row: auto; }
-  .card--grow            { grid-column: 1 / 3; grid-row: auto; }
+
+  .card--hero {
+    grid-column: 1 / 3;
+  }
+
+  .card--schedule-social {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .card--write-ai {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .card--grow {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+
+  .card--create,
+  .card--manage,
+  .card--maintain,
+  .card--growth-stat {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }
 
 /* ================================
@@ -475,18 +496,31 @@ em {
   body {
     padding: 1.5rem 1rem;
   }
+
   .grid {
     grid-template-columns: 1fr;
+    grid-template-areas: unset;
+    grid-auto-rows: auto;
     gap: 1rem;
   }
-  .card--hero            { order: 1; grid-column: 1 !important; }
-  .card--manage          { order: 2; grid-column: 1 !important; }
-  .card--maintain        { order: 3; grid-column: 1 !important; }
-  .card--schedule-social { order: 4; grid-column: 1 !important; }
-  .card--grow            { order: 5; flex-direction: column; grid-column: 1 !important; }
-  .card--growth-stat     { order: 6; grid-column: 1 !important; }
-  .card--create          { order: 7; grid-column: 1 !important; }
-  .card--write-ai        { order: 8; grid-column: 1 !important; }
 
-  .card--grow .card__img--grow { width: 100%; }
+  .card--hero,
+  .card--schedule-social,
+  .card--write-ai,
+  .card--manage,
+  .card--maintain,
+  .card--create,
+  .card--growth-stat,
+  .card--grow {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .card--grow {
+    flex-direction: column;
+  }
+
+  .card--grow .card__img--grow {
+    width: 100%;
+  }
 }
