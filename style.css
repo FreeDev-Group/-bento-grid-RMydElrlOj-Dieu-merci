@@ -1,41 +1,40 @@
-/* Issue 2: Fonts and base styles */
+/* ================================
+   CSS CUSTOM PROPERTIES (TOKENS)
+================================ */
 :root {
-  /* Colors */
+  /* Colors from style guide */
   --clr-purple-100: hsl(254, 88%, 90%);
   --clr-purple-500: hsl(256, 67%, 59%);
-  --clr-purple-dark: hsl(256, 67%, 50%);
-
   --clr-yellow-100: hsl(31, 66%, 93%);
   --clr-yellow-500: hsl(39, 100%, 71%);
-
   --clr-white: hsl(0, 0%, 100%);
   --clr-black: hsl(0, 0%, 7%);
-  --clr-gray: hsl(0, 0%, 25%);
-  --clr-beige: hsl(35, 100%, 92%);
+  --clr-gray: hsl(0, 0%, 45%);
+  --clr-bg: hsl(0, 0%, 95%);
 
   /* Typography */
-  --font-sans: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-size-body: 18px;
-  --font-size-lg: 32px;
-  --font-size-md: 24px;
-  --font-size-sm: 14px;
-  --line-height: 1.5;
-  --line-height-tight: 1.2;
+  --font: "DM Sans", system-ui, sans-serif;
+  --fs-xs: 0.7rem;
+  --fs-sm: 0.85rem;
+  --fs-base: 1rem;
+  --fs-md: 1.2rem;
+  --fs-lg: 1.6rem;
+  --fs-xl: 2.1rem;
+  --fs-2xl: 3.5rem;
+  --fs-hero: 3rem;
 
   /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 2.5rem;
+  --gap: 1.25rem;
+  --pad: 1.75rem;
 
-  /* Border radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  /* Radius */
+  --radius: 1.5rem;
+  --radius-sm: 0.75rem;
 }
 
-/* Import local fonts */
+/* ================================
+   LOCAL FONTS
+================================ */
 @font-face {
   font-family: "DM Sans";
   font-weight: 400;
@@ -43,7 +42,6 @@
   font-display: swap;
   src: url("./assets/fonts/static/DMSans-Regular.ttf") format("truetype");
 }
-
 @font-face {
   font-family: "DM Sans";
   font-weight: 500;
@@ -52,453 +50,443 @@
   src: url("./assets/fonts/static/DMSans-Medium.ttf") format("truetype");
 }
 
-/* Global reset and base styles */
-* {
+/* ================================
+   RESET & BASE
+================================ */
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-sans);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height);
+  font-family: var(--font);
+  font-size: 1rem;
+  background-color: var(--clr-bg);
   color: var(--clr-black);
-  background-color: hsl(0, 0%, 96%);
+  line-height: 1.5;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  padding-top: 1rem;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 500;
-  line-height: var(--line-height-tight);
-}
-
-h1 {
-  font-size: var(--font-size-lg);
-}
-
-h2 {
-  font-size: var(--font-size-md);
-}
-
-p {
-  margin: 0;
-  color: var(--clr-gray);
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: opacity 0.2s ease;
 }
 
-a:focus-visible {
-  outline: 2px solid var(--clr-purple-500);
-  outline-offset: 2px;
+em {
+  font-style: italic;
 }
 
-a:hover {
-  opacity: 0.8;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Layout container */
+/* ================================
+   APP WRAPPER
+================================ */
 .app {
-  min-height: 100vh;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-lg);
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 1.5rem;
+  justify-content: center;
+  padding-top: 20px;
 }
 
-/* Issue 3: CSS Grid for desktop (redesigned layout) */
+/* ================================
+   BENTO GRID — DESKTOP
+================================ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: minmax(180px, auto);
-  gap: var(--spacing-md);
-  flex: 1;
-  margin-bottom: var(--spacing-lg);
-  min-height: 800px;
+  grid-template-columns: 1fr 1.55fr 1.35fr 1.25fr;
+  grid-template-rows: auto auto auto;
+  gap: var(--gap);
+  align-items: stretch;
 }
 
-/* Card base styles */
+/* ================================
+   CARD BASE
+================================ */
 .card {
   background-color: var(--clr-white);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: left;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-/* Grid positioning for each card */
-.card--create {
-  grid-column: 1 / 3;
-  grid-row: 1 / 3;
-  background-color: var(--clr-beige);
-  justify-content: flex-start;
-}
-
-.card--hero {
-  grid-column: 3 / 5;
-  grid-row: 1 / 3;
-  background: linear-gradient(135deg, var(--clr-purple-500) 0%, var(--clr-purple-dark) 100%);
-  color: var(--clr-white);
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-
-.card--schedule-social {
-  grid-column: 5 / 7;
-  grid-row: 1 / 2;
-  background-color: var(--clr-purple-100);
-}
-
-.card--best-time {
-  grid-column: 5 / 7;
-  grid-row: 2 / 3;
-  background-color: var(--clr-purple-100);
-}
-
-.card--optimize-timing {
-  grid-column: 5 / 7;
-  grid-row: 4 / 5;
-  background-color: var(--clr-purple-100);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: var(--spacing-md);
-  font-size: 0.95em;
-}
-
-.card--write-ai {
-  grid-column: 1 / 3;
-  grid-row: 3 / 5;
-  background-color: var(--clr-yellow-500);
-}
-
-.card--manage {
-  grid-column: 3 / 4;
-  grid-row: 3 / 4;
-  background-color: var(--clr-white);
-}
-
-.card--growth-stat {
-  grid-column: 4 / 5;
-  grid-row: 3 / 4;
-  background-color: var(--clr-beige);
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: var(--spacing-md);
-  font-size: 0.9em;
-}
-
-.card--maintain {
-  grid-column: 5 / 7;
-  grid-row: 3 / 4;
-  background-color: var(--clr-yellow-500);
-}
-
-.card--grow {
-  grid-column: 3 / 7;
-  grid-row: 5 / 6;
-  background: linear-gradient(135deg, var(--clr-purple-500) 0%, var(--clr-purple-dark) 100%);
-  color: var(--clr-white);
-}
-
-/* Card title styling */
 .card__title {
-  font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: var(--spacing-md);
-  color: inherit;
-  line-height: 1.3;
-}
-
-.card--hero .card__title {
-  font-size: 2.5rem;
-  line-height: 1.2;
-}
-
-.card--write-ai .card__title {
-  font-size: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: var(--clr-black);
 }
 
-.card--maintain .card__title {
-  font-size: 1.8rem;
-  color: var(--clr-black);
+/* ================================
+   CARD 1: CREATE & SCHEDULE
+   Col 1 / Row 1
+================================ */
+.card--create {
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--clr-yellow-100);
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
-.card--grow .card__title {
-  font-size: 1.8rem;
+.card--create .card__title {
+  font-size: var(--fs-xl);
 }
 
-/* Text highlight color */
-.text-highlight {
+.card--create .card__title .highlight {
+  color: var(--clr-purple-500);
+  font-style: italic;
+}
+
+.card__img--create {
+  width: 190px;
+}
+
+/* ================================
+   CARD 2: HERO
+   Col 2-3 / Row 1
+================================ */
+.card--hero {
+  grid-column: 2 / 4;
+  grid-row: 1;
+  background-color: var(--clr-purple-500);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+}
+
+.card__hero-title {
+  font-size: var(--fs-hero);
+  font-weight: 500;
+  color: var(--clr-white);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.card__hero-title .highlight-yellow {
   color: var(--clr-yellow-500);
 }
 
-.text-large {
-  font-size: 2.2rem;
-  font-weight: 600;
-  color: var(--clr-black);
+.card__img--stars {
+  width: 180px;
+  margin: 0.5rem auto 0;
 }
 
-/* Body text */
-.card__body {
-  font-size: 1rem;
-  line-height: var(--line-height);
-  color: var(--clr-gray);
-}
-
-/* Button styling */
-.card__btn {
-  background: linear-gradient(135deg, var(--clr-yellow-500) 0%, hsl(39, 100%, 65%) 100%);
-  color: var(--clr-black);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  margin-top: auto;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.card__btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Hero styling */
-.card__hero-title {
-  font-size: 2.5rem;
-  font-weight: 500;
-  line-height: 1.2;
-  margin-bottom: var(--spacing-md);
-  text-align: center;
-}
-
-.card__stars {
-  font-size: 1.5rem;
-  margin-bottom: var(--spacing-sm);
-  letter-spacing: 2px;
-}
-
-.card__subtitle {
+.card__hero-sub {
   color: var(--clr-white);
-  font-size: 0.95rem;
-  text-align: center;
-  opacity: 0.95;
+  font-size: var(--fs-base);
+  opacity: 0.9;
 }
 
-/* Image styling */
-.card__image {
-  width: 80%;
-  height: auto;
-  margin-top: auto;
+/* ================================
+   CARD 3: SCHEDULE TO SOCIAL MEDIA
+   Col 4 / Row 1-2
+================================ */
+.card--schedule-social {
+  grid-column: 4;
+  grid-row: 1 / 3;
+  background-color: var(--clr-purple-100);
+  gap: 1.5rem;
+  justify-content: flex-start;
+  padding-bottom: 2rem;
 }
 
-.card__image-lg {
-  width: 70%;
-  height: auto;
-  margin-top: auto;
+.card--schedule-social .card__title {
+  font-size: var(--fs-lg);
 }
 
-.card__image-md {
-  width: 75%;
-  height: auto;
-  margin-top: auto;
+.card__img--schedule-posts {
+  width: 100%;
 }
 
-.card__image-sm {
-  width: 60%;
-  height: auto;
-  margin-top: var(--spacing-md);
-}
-
-.card__caption {
-  font-size: 0.85rem;
+.card--schedule-social .card__body {
+  font-size: var(--fs-base);
   color: var(--clr-gray);
-  margin-top: var(--spacing-sm);
-  text-align: center;
+  line-height: 1.4;
+}
+
+/* ================================
+   CARD 4: MANAGE MULTIPLE ACCOUNTS
+   Col 2 / Row 2
+================================ */
+.card--manage {
+  grid-column: 2;
+  grid-row: 2;
+  background-color: var(--clr-white);
+  gap: 1.5rem;
+  overflow: hidden; /* Prevent horizontal scroll */
+}
+
+.card__platforms {
+  position: relative;
+  height: 220px; /* Space for absolute positioning of 3 badges */
+  margin-bottom: 0.5rem;
   width: 100%;
 }
 
-.card__avatars {
-  margin-top: var(--spacing-md);
+.platform-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--clr-white);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  /* Width calc so it doesn't break out of the card container */
+  width: calc(100% + 2rem);
+}
+
+.platform-badge--ig {
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.platform-badge--x {
+  top: 50px;
+  left: 30px; 
+  z-index: 2;
+}
+
+.platform-badge--fb {
+  top: 100px;
+  left: 60px;
+  z-index: 1;
+}
+
+.platform-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.platform-ig {
+  background: linear-gradient(135deg, hsl(37, 97%, 70%), hsl(329, 70%, 58%), hsl(262, 52%, 47%));
+  color: white;
+}
+
+.platform-x {
+  background: hsl(0, 0%, 7%);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.platform-fb {
+  background: #1877F2;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+}
+
+.platform-name {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--clr-black);
+}
+
+.platform-followers {
+  font-size: var(--fs-xs);
+  color: var(--clr-gray);
+}
+
+.card--manage .card__title {
+  font-size: var(--fs-lg);
+}
+
+/* ================================
+   CARD 5: MAINTAIN CONSISTENT
+   Col 3 / Row 2
+================================ */
+.card--maintain {
+  grid-column: 3;
+  grid-row: 2;
+  background-color: var(--clr-yellow-500);
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 0; /* image bleeds bottom */
+}
+
+.card--maintain .card__title {
+  font-size: var(--fs-lg);
+}
+
+.card__img--schedule {
   width: 100%;
-}
-
-.avatar {
-  width: 60px;
-  height: auto;
-  margin: 0 auto;
-}
-
-/* Attribution footer */
-.attribution {
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   margin-top: auto;
-  font-size: var(--font-size-sm);
-  text-align: center;
-  color: hsl(228, 45%, 44%);
-  padding-top: var(--spacing-md);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* ================================
+   CARD 6: WRITE YOUR CONTENT USING AI
+   Col 1 / Row 2-3
+================================ */
+.card--write-ai {
+  grid-column: 1;
+  grid-row: 2 / 4;
+  background-color: var(--clr-yellow-500);
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding-bottom: 0;
+}
+
+.card--write-ai .card__title {
+  font-size: var(--fs-xl);
+  padding-right: 1rem;
+}
+
+.card__img--ai {
+  width: 100%;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  margin-top: auto;
+}
+
+/* ================================
+   CARD 7: >56% GROWTH STAT
+   Col 2 / Row 3
+================================ */
+.card--growth-stat {
+  grid-column: 2;
+  grid-row: 3;
+  background-color: var(--clr-white);
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.card__stat {
+  font-size: var(--fs-2xl);
+  font-weight: 500;
+  color: var(--clr-black);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.card__stat-label {
+  font-size: var(--fs-base);
+  color: var(--clr-gray);
+  font-weight: 500;
+}
+
+.card__img--avatars {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+/* ================================
+   CARD 8: GROW FOLLOWERS
+   Col 3-4 / Row 3
+================================ */
+.card--grow {
+  grid-column: 3 / 5;
+  grid-row: 3;
+  background-color: var(--clr-purple-500);
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.card--grow .card__title {
+  font-size: var(--fs-xl);
+  color: var(--clr-white);
+  flex: 1;
+}
+
+.card__img--grow {
+  width: 50%;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+/* ================================
+   ATTRIBUTION
+================================ */
+.attribution {
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: hsl(228, 45%, 44%);
+  padding-top: 0.5rem;
+}
 .attribution a {
   color: var(--clr-purple-500);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: underline;
 }
-
 .attribution a:hover {
   color: var(--clr-black);
-  text-decoration: none;
 }
 
-/* Issue 3: CSS Grid for desktop → completed */
-
-/* Issue 4: Add images and content → completed */
-
-/* Issue 5: Responsive mobile design */
-@media (max-width: 1024px) {
-  .app {
-    padding: var(--spacing-md);
-  }
-
+/* ================================
+   RESPONSIVE TABLET — ≤ 900px
+================================ */
+@media (max-width: 900px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    gap: var(--spacing-sm);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
   }
-
-  /* Reset grid positioning for tablet */
-  .card--create,
-  .card--hero,
-  .card--schedule-social,
-  .card--best-time,
-  .card--optimize-timing,
-  .card--write-ai,
-  .card--manage,
-  .card--growth-stat,
-  .card--maintain,
-  .card--grow {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .card {
-    padding: var(--spacing-md);
-  }
-
-  .card__title {
-    font-size: 1.25rem;
-  }
-
-  .card--hero .card__title {
-    font-size: 2rem;
-  }
+  .card--create          { grid-column: 1; grid-row: auto; }
+  .card--hero            { grid-column: 1 / 3; grid-row: auto; }
+  .card--schedule-social { grid-column: 2; grid-row: auto; }
+  .card--manage          { grid-column: 1; grid-row: auto; }
+  .card--maintain        { grid-column: 2; grid-row: auto; }
+  .card--write-ai        { grid-column: 1; grid-row: auto; }
+  .card--growth-stat     { grid-column: 2; grid-row: auto; }
+  .card--grow            { grid-column: 1 / 3; grid-row: auto; }
 }
 
-@media (max-width: 768px) {
-  .app {
-    padding: var(--spacing-sm);
+/* ================================
+   RESPONSIVE MOBILE — ≤ 600px
+================================ */
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem 1rem;
   }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    min-height: auto;
-  }
-
-  .card {
-    padding: var(--spacing-md);
-    border-radius: var(--radius-md);
-  }
-
-  .card__title {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .card--hero .card__title {
-    font-size: 1.75rem;
-  }
-
-  .card--write-ai .card__title {
-    font-size: 1.5rem;
-  }
-
-  .card__image,
-  .card__image-lg,
-  .card__image-md,
-  .card__image-sm {
-    width: 80%;
-  }
-}
-
-@media (max-width: 480px) {
-  .app {
-    padding: var(--spacing-xs);
-  }
-
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-xs);
+    gap: 1rem;
   }
+  .card--hero            { order: 1; grid-column: 1 !important; }
+  .card--manage          { order: 2; grid-column: 1 !important; }
+  .card--maintain        { order: 3; grid-column: 1 !important; }
+  .card--schedule-social { order: 4; grid-column: 1 !important; }
+  .card--grow            { order: 5; flex-direction: column; grid-column: 1 !important; }
+  .card--growth-stat     { order: 6; grid-column: 1 !important; }
+  .card--create          { order: 7; grid-column: 1 !important; }
+  .card--write-ai        { order: 8; grid-column: 1 !important; }
 
-  .card {
-    padding: var(--spacing-sm);
-    border-radius: var(--radius-md);
-  }
-
-  .card__title {
-    font-size: 1rem;
-    margin-bottom: var(--spacing-sm);
-  }
-
-  .card--hero .card__title {
-    font-size: 1.5rem;
-  }
-
-  .card__btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.85rem;
-  }
-
-  .attribution {
-    font-size: 0.75rem;
-  }
+  .card--grow .card__img--grow { width: 100%; }
 }
-
-/* Issue 5: Responsive mobile design → completed */
-
-/* Issue 6: Polish the styles → completed */
