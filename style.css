@@ -131,7 +131,7 @@ img {
   gap: var(--spacing-md);
   flex: 1;
   margin-bottom: var(--spacing-lg);
-  min-height: 600px;
+  min-height: 800px;
 }
 
 /* Card base styles */
@@ -187,7 +187,7 @@ img {
 
 .card--optimize-timing {
   grid-column: 5 / 7;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
   background-color: var(--clr-purple-100);
   justify-content: center;
   align-items: center;
@@ -221,13 +221,13 @@ img {
 
 .card--maintain {
   grid-column: 5 / 7;
-  grid-row: 4 / 5;
+  grid-row: 3 / 4;
   background-color: var(--clr-yellow-500);
 }
 
 .card--grow {
-  grid-column: 3 / 5;
-  grid-row: 4 / 5;
+  grid-column: 3 / 7;
+  grid-row: 5 / 6;
   background: linear-gradient(135deg, var(--clr-purple-500) 0%, var(--clr-purple-dark) 100%);
   color: var(--clr-white);
 }
