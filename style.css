@@ -125,3 +125,50 @@ img {
   }
 }
 
+/* Issue 3: Added base card styles with hover effects */
+
+.card {
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2);
+  min-height: 200px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(127, 64, 208, 0.2);
+}
+
+.card__title {
+  font-size: var(--fs-title);
+  font-weight: var(--fw-semibold);
+  line-height: 1.15;
+  color: var(--clr-text);
+}
+
+.card__body {
+  margin-top: var(--space-1);
+  font-size: var(--fs-body);
+  color: var(--clr-text-light);
+}
+
+.card__img {
+  margin-top: auto;
+  transition: transform 0.5s;
+  object-fit: contain;
+}
+
+.card:hover .card__img {
+  transform: scale(1.04) translateY(-2px);
+}
+
