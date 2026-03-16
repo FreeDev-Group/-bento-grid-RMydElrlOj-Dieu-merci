@@ -206,3 +206,21 @@ img {
   margin-block: var(--space-2);
 }
 
+/* Issue 5: Added Create card with highlight and illustration */
+
+.card--create {
+  background: linear-gradient(135deg, var(--clr-yellow-soft) 0%, #fff7e5 100%);
+  border: 1px solid rgba(255, 200, 0, 0.3);
+}
+
+.highlight {
+  color: var(--clr-purple);
+  font-style: italic;
+  font-weight: var(--fw-bold);
+}
+
+.card__img--create {
+  width: clamp(140px, 40vw, 190px);
+  margin-inline: auto;
+}
+
