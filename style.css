@@ -1,526 +1,624 @@
-/* ================================
-   CSS CUSTOM PROPERTIES (TOKENS)
-================================ */
+/* ======================================
+   DESIGN TOKENS
+====================================== */
 :root {
-  /* Colors from style guide */
-  --clr-purple-100: hsl(254, 88%, 90%);
-  --clr-purple-500: hsl(256, 67%, 59%);
-  --clr-yellow-100: hsl(31, 66%, 93%);
-  --clr-yellow-500: hsl(39, 100%, 71%);
-  --clr-white: hsl(0, 0%, 100%);
-  --clr-black: hsl(0, 0%, 7%);
-  --clr-gray: hsl(0, 0%, 45%);
-  --clr-bg: hsl(0, 0%, 95%);
+  /* COLORS */
+  --clr-purple: hsl(256, 67%, 59%);
+  --clr-purple-dark: hsl(256, 67%, 45%);
+  --clr-purple-light: hsl(254, 88%, 90%);
+  --clr-yellow: hsl(39, 100%, 71%);
+  --clr-yellow-dark: hsl(39, 100%, 60%);
+  --clr-yellow-soft: hsl(31, 66%, 93%);
+  --clr-white: #ffffff;
+  --clr-bg: #f8f8f9;
+  --clr-text: #1a1a1a;
+  --clr-text-light: #666;
+  --clr-border: rgba(0, 0, 0, 0.08);
 
-  /* Typography */
-  --font: "DM Sans", system-ui, sans-serif;
-  --fs-xs: 0.7rem;
-  --fs-sm: 0.85rem;
-  --fs-base: 1rem;
-  --fs-md: 1.2rem;
-  --fs-lg: 1.6rem;
-  --fs-xl: 2.1rem;
-  --fs-2xl: 3.5rem;
-  --fs-hero: 3rem;
+  /* TYPOGRAPHY */
+  --fs-hero: clamp(2.5rem, 6vw, 4rem);
+  --fs-title: clamp(1.2rem, 2.5vw, 1.7rem);
+  --fs-body: 1.05rem;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 
-  /* Spacing */
-  --gap: 1.25rem;
-  --pad: 1.75rem;
+  /* SPACING */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
 
-  /* Radius */
-  --radius: 1.5rem;
-  --radius-sm: 0.75rem;
+  /* RADIUS */
+  --radius-card: 24px;
+  --radius-button: 10px;
+
+  /* SHADOWS (Improved design) */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 24px 48px rgba(127, 64, 208, 0.15);
 }
 
-/* ================================
-   LOCAL FONTS
-================================ */
-@font-face {
-  font-family: "DM Sans";
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-  src: url("./assets/fonts/static/DMSans-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "DM Sans";
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-  src: url("./assets/fonts/static/DMSans-Medium.ttf") format("truetype");
-}
-
-/* ================================
-   RESET & BASE
-================================ */
+/* ======================================
+   RESET & ANIMATIONS
+====================================== */
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-overflow: hidden;
+* {
+  margin: 0;
 }
 
 body {
-  font-family: var(--font);
-  font-size: 1rem;
-  background-color: var(--clr-bg);
-  color: var(--clr-black);
-  line-height: 1.5;
+  font-family: "DM Sans", sans-serif;
+  background: radial-gradient(circle at 50% -20%, #eceaf6 0%, var(--clr-bg) 70%);
+  color: var(--clr-text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  overflow: hidden;
 }
 
 img {
-  display: block;
   max-width: 100%;
-  height: auto;
+  display: block;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-em {
-  font-style: italic;
-}
-
-/* ================================
-   APP WRAPPER
-================================ */
+/* ======================================
+   APP CONTAINER
+====================================== */
 .app {
-  width: 100%;
-  max-width: 1100px;
+  max-width: 1280px;
   margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: center;
-  padding-top: 20px;
-  overflow: hidden;
+  padding: var(--space-5) var(--space-3);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ================================
-   BENTO GRID — DESKTOP
-================================ */
+@media (min-width: 1024px) {
+  .app {
+    padding: clamp(3rem, 5vw, 5rem) var(--space-4);
+  }
+}
+
+/* ======================================
+   GRID MOBILE (DEFAULT)
+====================================== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "create hero hero schedule-social"
-    "write-ai manage maintain schedule-social"
-    "write-ai growth-stat grow grow";
-  gap: var(--gap);
-  align-items: stretch;
-  overflow: hidden;
-  flex: 1;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
 }
 
-/* ================================
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-4);
+  }
+  .grid > * {
+    order: 0 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+/* ======================================
    CARD BASE
-================================ */
+====================================== */
 .card {
-  background-color: var(--clr-white);
-  border-radius: var(--radius);
-  padding: var(--pad);
-  overflow: hidden;
+  border-radius: var(--radius-card);
+  padding: var(--space-4);
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
+  min-height: 200px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
   overflow: hidden;
-
 }
 
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: var(--radius-card);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(127, 64, 208, 0.2);
+}
+
+.card:focus-within {
+  outline: 2px solid var(--clr-purple);
+  outline-offset: 2px;
+}
+
+/* ======================================
+   TEXT
+====================================== */
 .card__title {
-  font-weight: 500;
-  line-height: 1.1;
+  font-size: var(--fs-title);
+  font-weight: var(--fw-semibold);
+  line-height: 1.15;
+  color: var(--clr-text);
   letter-spacing: -0.03em;
-  color: var(--clr-black);
 }
 
-/* ================================
-   CARD 1: CREATE & SCHEDULE
-   Col 1 / Row 1
-================================ */
-.card--create {
-  grid-area: create;
-  background-color: var(--clr-yellow-100);
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem;
+.card__body {
+  margin-top: var(--space-1);
+  font-size: var(--fs-body);
+  color: var(--clr-text-light);
+  line-height: 1.6;
 }
 
-.card--create .card__title {
-  font-size: var(--fs-xl);
+.card__img {
+  margin-top: auto;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  object-fit: contain;
 }
 
-.card--create .card__title .highlight {
-  color: var(--clr-purple-500);
-  font-style: italic;
+.card:hover .card__img {
+  transform: scale(1.04) translateY(-2px);
 }
 
-.card__img--create {
-  width: 190px;
-}
-
-/* ================================
-   CARD 2: HERO
-   Col 2-3 / Row 1
-================================ */
+/* ======================================
+   HERO CARD
+====================================== */
 .card--hero {
-  grid-area: hero;
-  background-color: var(--clr-purple-500);
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
+  color: white;
   text-align: center;
-  gap: 1rem;
-  padding: 3rem 2rem;
+  align-items: center;
+  border: none;
+  order: 1; /* mobile pos 1 */
+  min-height: 320px;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .card--hero {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--hero {
+    grid-column: 2 / 4;
+    grid-row: auto;
+  }
 }
 
 .card__hero-title {
   font-size: var(--fs-hero);
-  font-weight: 500;
-  color: var(--clr-white);
+  font-weight: var(--fw-bold);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
-.card__hero-title .highlight-yellow {
-  color: var(--clr-yellow-500);
+.highlight-yellow {
+  color: var(--clr-yellow);
+  font-weight: var(--fw-bold);
+}
+
+.card__hero-sub {
+  margin-top: var(--space-2);
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: var(--fw-medium);
 }
 
 .card__img--stars {
   width: 180px;
-  margin: 0.5rem auto 0;
+  margin-block: var(--space-2);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
 }
 
-.card__hero-sub {
-  color: var(--clr-white);
-  font-size: var(--fs-base);
-  opacity: 0.9;
+/* ======================================
+   CREATE CARD
+====================================== */
+.card--create {
+  background: linear-gradient(135deg, var(--clr-yellow-soft) 0%, #fff7e5 100%);
+  border: 1px solid rgba(255, 200, 0, 0.3);
+  order: 7;
 }
 
-/* ================================
-   CARD 3: SCHEDULE TO SOCIAL MEDIA
-   Col 4 / Row 1-2
-================================ */
+@media (min-width: 640px) {
+  .card--create {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--create {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+.highlight {
+  color: var(--clr-purple);
+  font-style: italic;
+  font-weight: var(--fw-bold);
+}
+
+/* ======================================
+   WRITE AI
+====================================== */
+.card--write-ai {
+  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
+  color: var(--clr-text);
+  border: none;
+  order: 8;
+  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+}
+
+.card--write-ai:hover {
+  box-shadow: 0 16px 40px rgba(255, 200, 0, 0.3);
+}
+
+@media (min-width: 640px) {
+  .card--write-ai {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--write-ai {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+}
+
+/* ======================================
+   SCHEDULE SOCIAL
+====================================== */
 .card--schedule-social {
-  grid-area: schedule-social;
-  background-color: var(--clr-purple-100);
-  gap: 1.5rem;
-  justify-content: flex-start;
-  padding-bottom: 2rem;
+  background: linear-gradient(135deg, #eaddff 0%, #f4efff 100%);
+  border: 1px solid rgba(127, 64, 208, 0.15);
+  order: 4;
 }
 
-.card--schedule-social .card__title {
-  font-size: var(--fs-lg);
+@media (min-width: 640px) {
+  .card--schedule-social {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }
 
-.card__img--schedule-posts {
-  width: 100%;
+@media (min-width: 1024px) {
+  .card--schedule-social {
+    grid-column: 4;
+    grid-row: 1 / 3;
+    overflow: hidden;
+  }
 }
 
-.card--schedule-social .card__body {
-  font-size: var(--fs-base);
-  color: var(--clr-gray);
-  line-height: 1.4;
-}
-
-/* ================================
-   CARD 4: MANAGE MULTIPLE ACCOUNTS
-   Col 2 / Row 2
-================================ */
+/* ======================================
+   MANAGE CARD
+====================================== */
 .card--manage {
-  grid-area: manage;
-  background-color: var(--clr-white);
-  gap: 1.5rem;
-  overflow: hidden; /* Prevent horizontal scroll */
+  display: flex;
+  flex-direction: column-reverse;
+  order: 2;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .card--manage {
+    display: flex;
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--manage {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 
 .card__platforms {
-  position: relative;
-  height: 220px; /* Space for absolute positioning of 3 badges */
-  margin-bottom: 0.5rem;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .platform-badge {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   background: var(--clr-white);
-  border-radius: var(--radius-sm);
   padding: 0.6rem 0.9rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  position: absolute;
-  /* Width calc so it doesn't break out of the card container */
-  width: 100%; 
+  border-radius: 12px;
+  border: 1px solid var(--clr-border);
+  font-size: 0.85rem;
+  font-weight: var(--fw-medium);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  width: 100%;
 }
 
-.platform-badge--ig {
-  top: 0;
-  left: 0;
-  z-index: 3;
-}
-
-.platform-badge--x {
-  top: 50px;
-  left: 30px; 
-  z-index: 2;
-}
-
-.platform-badge--fb {
-  top: 100px;
-  left: 60px;
-  z-index: 1;
+.platform-badge:hover {
+  background: rgba(127, 64, 208, 0.03);
+  border-color: rgba(127, 64, 208, 0.3);
+  transform: translateX(4px);
 }
 
 .platform-icon {
-  width: 2.2rem;
-  height: 2.2rem;
+  font-size: 1.1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  font-size: 1.1rem;
-  flex-shrink: 0;
 }
 
 .platform-ig {
-  background: linear-gradient(135deg, hsl(37, 97%, 70%), hsl(329, 70%, 58%), hsl(262, 52%, 47%));
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   color: white;
+  font-size: 0.9rem;
 }
 
 .platform-x {
-  background: hsl(0, 0%, 7%);
+  background: black;
   color: white;
-  font-size: 0.9rem;
-  font-weight: 700;
-  font-style: normal;
+  font-size: 0.8rem;
 }
 
 .platform-fb {
-  background: #1877F2;
+  background: #1877f2;
   color: white;
-  font-size: 1.1rem;
-  font-weight: 700;
-  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 .platform-name {
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  color: var(--clr-black);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text);
+  line-height: 1.2;
 }
 
 .platform-followers {
-  font-size: var(--fs-xs);
-  color: var(--clr-gray);
+  font-size: 0.75rem;
+  color: var(--clr-text-light);
 }
 
-.card--manage .card__title {
-  font-size: var(--fs-lg);
-}
-
-/* ================================
-   CARD 5: MAINTAIN CONSISTENT
-   Col 3 / Row 2
-================================ */
+/* ======================================
+   MAINTAIN
+====================================== */
 .card--maintain {
-  grid-area: maintain;
-  background-color: var(--clr-yellow-500);
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding-bottom: 0; /* image bleeds bottom */
+  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
+  color: var(--clr-text);
+  border: none;
+  order: 3;
+  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+  .card--maintain {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--maintain {
+    grid-column: 3;
+    grid-row: 2;
+  }
 }
 
 .card--maintain .card__title {
-  font-size: var(--fs-lg);
+  color: var(--clr-text);
 }
 
-.card__img--schedule {
-  width: 100%;
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  margin-top: auto;
-}
-
-/* ================================
-   CARD 6: WRITE YOUR CONTENT USING AI
-   Col 1 / Row 2-3
-================================ */
-.card--write-ai {
-  grid-area: write-ai;
-  background-color: var(--clr-yellow-500);
-  justify-content: flex-start;
-  gap: 1.5rem;
-  padding-bottom: 0;
-}
-
-.card--write-ai .card__title {
-  font-size: var(--fs-xl);
-  padding-right: 1rem;
-}
-
-.card__img--ai {
-  width: 100%;
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  margin-top: auto;
-}
-
-/* ================================
-   CARD 7: >56% GROWTH STAT
-   Col 2 / Row 3
-================================ */
+/* ======================================
+   STATS
+====================================== */
 .card--growth-stat {
-  grid-area: growth-stat;
-  background-color: var(--clr-white);
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
-
-.card__stat {
-  font-size: var(--fs-2xl);
-  font-weight: 500;
-  color: var(--clr-black);
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.card__stat-label {
-  font-size: var(--fs-base);
-  color: var(--clr-gray);
-  font-weight: 500;
-}
-
-.card__img--avatars {
-  width: 100%;
-  margin-top: 1.5rem;
-}
-
-/* ================================
-   CARD 8: GROW FOLLOWERS
-   Col 3-4 / Row 3
-================================ */
-.card--grow {
-  grid-area: grow;
-  background-color: var(--clr-purple-500);
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.card--grow .card__title {
-  font-size: var(--fs-xl);
-  color: var(--clr-white);
-  flex: 1;
-}
-
-.card__img--grow {
-  width: 50%;
-  flex-shrink: 0;
-  border-radius: var(--radius-sm);
-}
-
-/* ================================
-   ATTRIBUTION
-================================ */
-.attribution {
   text-align: center;
-  font-size: var(--fs-xs);
-  color: hsl(228, 45%, 44%);
-  padding-top: 0.5rem;
-}
-.attribution a {
-  color: var(--clr-purple-500);
-  font-weight: 500;
-  text-decoration: underline;
-}
-.attribution a:hover {
-  color: var(--clr-black);
+  order: 6;
 }
 
-/* ================================
-   RESPONSIVE TABLET — ≤ 900px
-================================ */
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: unset;
-    grid-auto-rows: auto;
-  }
-
-  .card--hero {
-    grid-column: 1 / 3;
-  }
-
-  .card--schedule-social {
-    grid-column: 1 / 3;
-    grid-row: auto;
-  }
-
-  .card--write-ai {
-    grid-column: 1 / 3;
-    grid-row: auto;
-  }
-
-  .card--grow {
-    grid-column: 1 / 3;
-    grid-row: auto;
-  }
-
-  .card--create,
-  .card--manage,
-  .card--maintain,
+@media (min-width: 640px) {
   .card--growth-stat {
     grid-column: auto;
     grid-row: auto;
   }
 }
 
-/* ================================
-   RESPONSIVE MOBILE — ≤ 600px
-================================ */
-@media (max-width: 600px) {
-  body {
-    padding: 1.5rem 1rem;
+@media (min-width: 1024px) {
+  .card--growth-stat {
+    grid-column: 2;
+    grid-row: 3;
   }
+}
 
-  .grid {
-    grid-template-columns: 1fr;
-    grid-template-areas: unset;
-    grid-auto-rows: auto;
-    gap: 1rem;
-  }
+.card__stat {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--clr-purple);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
 
-  .card--hero,
-  .card--schedule-social,
-  .card--write-ai,
-  .card--manage,
-  .card--maintain,
-  .card--create,
-  .card--growth-stat,
+.card__stat-label {
+  font-size: 1rem;
+  color: var(--clr-text-light);
+  font-weight: var(--fw-medium);
+  margin-top: var(--space-1);
+}
+
+/* ======================================
+   GROW FOLLOWERS
+====================================== */
+.card--grow {
+  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
+  color: white;
+  text-align: center;
+  border: none;
+  order: 5;
+  box-shadow: 0 10px 30px rgba(127, 64, 208, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.card--grow:hover {
+  box-shadow: 0 16px 40px rgba(127, 64, 208, 0.35);
+}
+
+@media (min-width: 640px) {
   .card--grow {
-    grid-column: auto;
+    grid-column: 1 / -1;
     grid-row: auto;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: var(--space-4);
   }
-
-  .card--grow {
-    flex-direction: column;
-  }
-
   .card--grow .card__img--grow {
-    width: 100%;
+    width: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--grow {
+    grid-column: 3 / 5;
+    grid-row: 3;
+  }
+}
+
+.card--grow .card__title {
+  color: white;
+}
+
+/* ======================================
+   FOOTER
+====================================== */
+.attribution {
+  text-align: center;
+  margin-top: var(--space-5);
+  font-size: 0.9rem;
+  color: var(--clr-text-light);
+  font-weight: var(--fw-medium);
+}
+
+.attribution a {
+  color: var(--clr-purple);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.attribution a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 2px;
+  background: var(--clr-purple);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.attribution a:hover {
+  color: var(--clr-purple-dark);
+}
+
+.attribution a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ======================================
+   IMAGE STYLES
+====================================== */
+.card__img {
+  object-fit: contain;
+  display: block;
+}
+
+.card__img--create {
+  width: clamp(140px, 40vw, 190px);
+  margin-inline: auto;
+}
+
+.card__img--stars {
+  width: clamp(140px, 35vw, 180px);
+  margin-inline: auto;
+}
+
+.card__img--schedule-posts {
+  width: 100%;
+  max-width: 100%;
+}
+
+.card__img--schedule {
+  width: clamp(140px, 40vw, 200px);
+  margin-inline: auto;
+  border-radius: 8px; /* a bit of smoothing for inner image edges */
+}
+
+.card__img--ai {
+  width: clamp(140px, 40vw, 190px);
+  margin-inline: auto;
+}
+
+.card__img--avatars {
+  width: clamp(130px, 30vw, 170px);
+  margin-inline: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+}
+
+.card__img--grow {
+  width: clamp(160px, 45vw, 220px);
+  margin-inline: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .card__img {
+    margin-top: auto;
+  }
+  .card--manage .card__platforms .platform-badge {
+    margin-bottom: 0.5rem;
   }
 }
