@@ -1,8 +1,6 @@
 /* ======================================
    DESIGN TOKENS
 ====================================== */
-
-/* Issue 1: Initial setup with HTML skeleton and global CSS variables */
 :root {
   /* COLORS */
   --clr-purple: hsl(256, 67%, 59%);
@@ -84,8 +82,6 @@ img {
   }
 }
 
-
-
 /* ======================================
    APP CONTAINER
 ====================================== */
@@ -102,8 +98,9 @@ img {
   }
 }
 
-/* Issue 2: Added responsive grid layout */
-
+/* ======================================
+   GRID MOBILE (DEFAULT)
+====================================== */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -116,6 +113,9 @@ img {
     grid-template-rows: auto;
     gap: var(--space-4);
   }
+  .grid > * {
+    order: 0 !important;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -125,8 +125,9 @@ img {
   }
 }
 
-/* Issue 3: Added base card styles with hover effects */
-
+/* ======================================
+   CARD BASE
+====================================== */
 .card {
   border-radius: var(--radius-card);
   padding: var(--space-4);
@@ -136,11 +137,22 @@ img {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--space-2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s ease;
   min-height: 200px;
   box-shadow: var(--shadow-sm);
-  transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
   position: relative;
   overflow: hidden;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: var(--radius-card);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  pointer-events: none;
 }
 
 .card:hover {
@@ -149,22 +161,32 @@ img {
   border-color: rgba(127, 64, 208, 0.2);
 }
 
+.card:focus-within {
+  outline: 2px solid var(--clr-purple);
+  outline-offset: 2px;
+}
+
+/* ======================================
+   TEXT
+====================================== */
 .card__title {
   font-size: var(--fs-title);
   font-weight: var(--fw-semibold);
   line-height: 1.15;
   color: var(--clr-text);
+  letter-spacing: -0.03em;
 }
 
 .card__body {
   margin-top: var(--space-1);
   font-size: var(--fs-body);
   color: var(--clr-text-light);
+  line-height: 1.6;
 }
 
 .card__img {
   margin-top: auto;
-  transition: transform 0.5s;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   object-fit: contain;
 }
 
@@ -172,21 +194,38 @@ img {
   transform: scale(1.04) translateY(-2px);
 }
 
-/* Issue 4: Added Hero card with gradient background and stars image */
-
+/* ======================================
+   HERO CARD
+====================================== */
 .card--hero {
   background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
   color: white;
   text-align: center;
   align-items: center;
   border: none;
+  order: 1; /* mobile pos 1 */
   min-height: 320px;
   justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .card--hero {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--hero {
+    grid-column: 2 / 4;
+    grid-row: auto;
+  }
 }
 
 .card__hero-title {
   font-size: var(--fs-hero);
   font-weight: var(--fw-bold);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
 }
 
 .highlight-yellow {
@@ -204,13 +243,30 @@ img {
 .card__img--stars {
   width: 180px;
   margin-block: var(--space-2);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
 }
 
-/* Issue 5: Added Create card with highlight and illustration */
-
+/* ======================================
+   CREATE CARD
+====================================== */
 .card--create {
   background: linear-gradient(135deg, var(--clr-yellow-soft) 0%, #fff7e5 100%);
   border: 1px solid rgba(255, 200, 0, 0.3);
+  order: 7;
+}
+
+@media (min-width: 640px) {
+  .card--create {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--create {
+    grid-column: 1;
+    grid-row: auto;
+  }
 }
 
 .highlight {
@@ -219,17 +275,14 @@ img {
   font-weight: var(--fw-bold);
 }
 
-.card__img--create {
-  width: clamp(140px, 40vw, 190px);
-  margin-inline: auto;
-}
-
-/* Issue 6: Added Write AI card with gradient and illustration */
-
+/* ======================================
+   WRITE AI
+====================================== */
 .card--write-ai {
   background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
   color: var(--clr-text);
   border: none;
+  order: 8;
   box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
 }
 
@@ -237,16 +290,300 @@ img {
   box-shadow: 0 16px 40px rgba(255, 200, 0, 0.3);
 }
 
-.card__img--ai {
+@media (min-width: 640px) {
+  .card--write-ai {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--write-ai {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+}
+
+/* ======================================
+   SCHEDULE SOCIAL
+====================================== */
+.card--schedule-social {
+  background: linear-gradient(135deg, #eaddff 0%, #f4efff 100%);
+  border: 1px solid rgba(127, 64, 208, 0.15);
+  order: 4;
+}
+
+@media (min-width: 640px) {
+  .card--schedule-social {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--schedule-social {
+    grid-column: 4;
+    grid-row: 1 / 3;
+    overflow: hidden;
+  }
+}
+
+/* ======================================
+   MANAGE CARD
+====================================== */
+.card--manage {
+  display: flex;
+  flex-direction: column-reverse;
+  order: 2;
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .card--manage {
+    display: flex;
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--manage {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.card__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.platform-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--clr-white);
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--clr-border);
+  font-size: 0.85rem;
+  font-weight: var(--fw-medium);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  width: 100%;
+}
+
+.platform-badge:hover {
+  background: rgba(127, 64, 208, 0.03);
+  border-color: rgba(127, 64, 208, 0.3);
+  transform: translateX(4px);
+}
+
+.platform-icon {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.platform-ig {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.platform-x {
+  background: black;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.platform-fb {
+  background: #1877f2;
+  color: white;
+  font-weight: bold;
+}
+
+.platform-name {
+  font-weight: var(--fw-semibold);
+  color: var(--clr-text);
+  line-height: 1.2;
+}
+
+.platform-followers {
+  font-size: 0.75rem;
+  color: var(--clr-text-light);
+}
+
+/* ======================================
+   MAINTAIN
+====================================== */
+.card--maintain {
+  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
+  color: var(--clr-text);
+  border: none;
+  order: 3;
+  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+}
+
+@media (min-width: 640px) {
+  .card--maintain {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--maintain {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}
+
+.card--maintain .card__title {
+  color: var(--clr-text);
+}
+
+/* ======================================
+   STATS
+====================================== */
+.card--growth-stat {
+  text-align: center;
+  order: 6;
+}
+
+@media (min-width: 640px) {
+  .card--growth-stat {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--growth-stat {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+.card__stat {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--clr-purple);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.card__stat-label {
+  font-size: 1rem;
+  color: var(--clr-text-light);
+  font-weight: var(--fw-medium);
+  margin-top: var(--space-1);
+}
+
+/* ======================================
+   GROW FOLLOWERS
+====================================== */
+.card--grow {
+  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
+  color: white;
+  text-align: center;
+  border: none;
+  order: 5;
+  box-shadow: 0 10px 30px rgba(127, 64, 208, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.card--grow:hover {
+  box-shadow: 0 16px 40px rgba(127, 64, 208, 0.35);
+}
+
+@media (min-width: 640px) {
+  .card--grow {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: var(--space-4);
+  }
+  .card--grow .card__img--grow {
+    width: 250px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--grow {
+    grid-column: 3 / 5;
+    grid-row: 3;
+  }
+}
+
+.card--grow .card__title {
+  color: white;
+}
+
+/* ======================================
+   FOOTER
+====================================== */
+.attribution {
+  text-align: center;
+  margin-top: var(--space-5);
+  font-size: 0.9rem;
+  color: var(--clr-text-light);
+  font-weight: var(--fw-medium);
+}
+
+.attribution a {
+  color: var(--clr-purple);
+  text-decoration: none;
+  font-weight: var(--fw-bold);
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.attribution a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 2px;
+  background: var(--clr-purple);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.attribution a:hover {
+  color: var(--clr-purple-dark);
+}
+
+.attribution a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ======================================
+   IMAGE STYLES
+====================================== */
+.card__img {
+  object-fit: contain;
+  display: block;
+}
+
+.card__img--create {
   width: clamp(140px, 40vw, 190px);
   margin-inline: auto;
 }
 
-/* Issue 7: Added Schedule Social and Manage cards with platforms */
-
-.card--schedule-social {
-  background: linear-gradient(135deg, #eaddff 0%, #f4efff 100%);
-  border: 1px solid rgba(127, 64, 208, 0.15);
+.card__img--stars {
+  width: clamp(140px, 35vw, 180px);
+  margin-inline: auto;
 }
 
 .card__img--schedule-posts {
@@ -254,41 +591,34 @@ img {
   max-width: 100%;
 }
 
-.card--manage {
-  display: flex;
-  flex-direction: column-reverse;
-  position: relative;
+.card__img--schedule {
+  width: clamp(140px, 40vw, 200px);
+  margin-inline: auto;
+  border-radius: 8px; /* a bit of smoothing for inner image edges */
 }
 
-.card__platforms {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+.card__img--ai {
+  width: clamp(140px, 40vw, 190px);
+  margin-inline: auto;
 }
 
-/* Issue 8: Added Maintain, Growth Stat and Grow Followers cards */
-
-.card--maintain {
-  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
-  border: none;
-  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+.card__img--avatars {
+  width: clamp(130px, 30vw, 170px);
+  margin-inline: auto;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
 }
 
-.card--growth-stat {
-  text-align: center;
+.card__img--grow {
+  width: clamp(160px, 45vw, 220px);
+  margin-inline: auto;
+  border-radius: 8px;
 }
 
-.card__stat {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: var(--fw-bold);
-  color: var(--clr-purple);
+@media (max-width: 640px) {
+  .card__img {
+    margin-top: auto;
+  }
+  .card--manage .card__platforms .platform-badge {
+    margin-bottom: 0.5rem;
+  }
 }
-
-.card--grow {
-  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-

@@ -1,74 +1,115 @@
 <!doctype html>
 <html lang="en">
-<!-- Issue 1: Initial setup with HTML skeleton and global CSS variables -->
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
+  <title>Frontend Mentor | Bento grid</title>
+  <meta name="description" content="Bento grid challenge by Frontend Mentor" />
   <link rel="stylesheet" href="./style.css" />
-  <title>Bento Grid</title>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 </head>
 
 <body>
   <main class="app">
-    <!-- Issue 2: Added responsive grid layout -->
-    <section class="grid">
-      <!-- Issue 4: Added Hero card with gradient background and stars image -->
+    <section class="grid" aria-label="Feature bento grid">
+      <!--Card 1: Create and schedule — col 1, row 1 -->
+      <div class="card card--create">
+        <h2 class="card__title">
+          Create and schedule content <em class="highlight">quicker.</em>
+        </h2>
+        <img src="./assets/images/illustration-create-post.webp" alt="Illustration showing fast content creation"
+          class="card__img card__img--create" loading="lazy" />
+      </div>
+
+      <!-- Card 2: Hero — col 2-3, row 1 -->
       <div class="card card--hero">
         <h1 class="card__hero-title">
-          Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with AI
+          Social Media <span class="highlight-yellow">10x</span>
+          <em>Faster</em> with AI
         </h1>
-        <img src="./assets/images/illustration-five-stars.webp" class="card__img card__img--stars" />
+        <img src="./assets/images/illustration-five-stars.webp" alt="Five star rating illustration"
+          class="card__img card__img--stars" loading="lazy" />
         <p class="card__hero-sub">Over 4,000 5-star reviews</p>
       </div>
-      <!-- Issue 5: Added Create card with highlight and illustration -->
-      <div class="card card--create">
-        <h2 class="card__title">Create and schedule content <em class="highlight">quicker.</em></h2>
-        <img src="./assets/images/illustration-create-post.webp" class="card__img card__img--create" />
-      </div>
 
-      <!-- Issue 6: Added Write AI card with gradient and illustration -->
-      <div class="card card--write-ai">
-        <h2 class="card__title">Write your content using AI.</h2>
-        <img src="./assets/images/illustration-ai-content.webp" class="card__img card__img--ai" />
-      </div>
-
-      <!--Issue 7: Added Schedule Social and Manage cards with platforms  -->
-
+      <!-- Card 3: Schedule to social media — col 4, row 1-2 -->
       <div class="card card--schedule-social">
         <h2 class="card__title">Schedule to social media.</h2>
-        <img src="./assets/images/illustration-schedule-posts.webp" class="card__img card__img--schedule-posts" />
-        <p class="card__body">Optimize post timings to publish content at the perfect time for your audience.</p>
+
+        <img src="./assets/images/illustration-schedule-posts.webp" alt="Chart showing optimal times to post"
+          class="card__img card__img--schedule-posts" loading="lazy" />
+
+        <p class="card__body">
+          Optimize post timings to publish content at the perfect time for
+          your audience.
+        </p>
       </div>
 
+      <!-- Card 4: Manage multiple accounts — col 2, row 2 -->
       <div class="card card--manage">
         <h2 class="card__title">Manage multiple accounts and platforms.</h2>
-        <div class="card__platforms">
-          <div class="platform-badge platform-badge--ig">IG: 12K Followers</div>
-          <div class="platform-badge platform-badge--x">X: 8K Followers</div>
-          <div class="platform-badge platform-badge--fb">FB: 5K Followers</div>
+        <!-- Platform social media accounts -->
+        <div class="card__platforms" role="list" aria-label="Connected social media accounts">
+          <div class="platform-badge platform-badge--ig" role="listitem">
+            <span class="platform-icon platform-ig" aria-hidden="true">
+              <span class="iconify" data-icon="mdi:instagram" data-width="20" data-height="20"></span>
+            </span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">12K Followers</div>
+            </div>
+          </div>
+          <div class="platform-badge platform-badge--x" role="listitem">
+            <span class="platform-icon platform-x" aria-hidden="true">
+              <span class="iconify" data-icon="ri:twitter-x-line" data-width="16" data-height="16"></span>
+            </span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">8K Followers</div>
+            </div>
+          </div>
+          <div class="platform-badge platform-badge--fb" role="listitem">
+            <span class="platform-icon platform-fb" aria-hidden="true">
+              <span class="iconify" data-icon="mdi:facebook" data-width="22" data-height="22"></span>
+            </span>
+            <div>
+              <div class="platform-name">Ir mugisho merci</div>
+              <div class="platform-followers">5K Followers</div>
+            </div>
+          </div>
         </div>
       </div>
 
-<!-- Issue 8: Added Maintain, Growth Stat and Grow Followers cards -->
+      <!-- Card 5: Maintain a consistent posting schedule — col 3, row 2 -->
+      <div class="card card--maintain">
+        <h2 class="card__title">Maintain a consistent posting schedule.</h2>
+        <img src="./assets/images/illustration-consistent-schedule.webp"
+          alt="Calendar showing consistent posting schedule" class="card__img card__img--schedule" loading="lazy" />
+      </div>
 
-<div class="card card--maintain">
-  <h2 class="card__title">Maintain a consistent posting schedule.</h2>
-  <img src="./assets/images/illustration-consistent-schedule.webp" class="card__img card__img--schedule" />
-</div>
+      <!-- Card 6: Write your content using AI — col 1, row 2-3 -->
+      <div class="card card--write-ai">
+        <h2 class="card__title">Write your content using AI.</h2>
+        <img src="./assets/images/illustration-ai-content.webp" alt="Chat bubbles showing AI-powered content writing"
+          class="card__img card__img--ai" loading="lazy" />
+      </div>
 
-<div class="card card--growth-stat">
-  <p class="card__stat">&gt;56%</p>
-  <p class="card__stat-label">faster audience growth</p>
-  <img src="./assets/images/illustration-audience-growth.webp" class="card__img card__img--avatars" />
-</div>
+      <!-- Card 7: 56% faster audience growth — col 2, row 3 -->
+      <div class="card card--growth-stat">
+        <p class="card__stat">&gt;56%</p>
+        <p class="card__stat-label">faster audience growth</p>
+        <img src="./assets/images/illustration-audience-growth.webp" alt="Profile avatars representing audience growth"
+          class="card__img card__img--avatars" loading="lazy" />
+      </div>
 
-<div class="card card--grow">
-  <img src="./assets/images/illustration-grow-followers.webp" class="card__img card__img--grow" />
-  <h2 class="card__title">Grow followers with non-stop content.</h2>
-</div>
-
-
+      <!-- Card 8: Grow followers — col 3-4, row 3 -->
+      <div class="card card--grow">
+        <img src="./assets/images/illustration-grow-followers.webp" alt="Growth chart showing follower increase"
+          class="card__img card__img--grow" loading="lazy" />
+        <h2 class="card__title">Grow followers with non-stop content.</h2>
+      </div>
 
     </section>
 
@@ -79,7 +120,7 @@
         target="_blank" rel="noopener">MUGISHO NTASHARA MERCI</a>.
     </footer>
   </main>
-
 </body>
 
 </html>
+
