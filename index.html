@@ -1,58 +1,78 @@
 <!doctype html>
 <html lang="en">
-  <!-- Issue 1: Initial setup with HTML skeleton and global CSS variables -->
+<!-- Issue 1: Initial setup with HTML skeleton and global CSS variables -->
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./style.css" />
   <title>Bento Grid</title>
 </head>
+
 <body>
   <main class="app">
     <!-- Issue 2: Added responsive grid layout -->
     <section class="grid">
-<!-- Issue 4: Added Hero card with gradient background and stars image -->
- <div class="card card--hero">
-  <h1 class="card__hero-title">
-    Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with AI
-  </h1>
-  <img src="./assets/images/illustration-five-stars.webp" class="card__img card__img--stars" />
-  <p class="card__hero-sub">Over 4,000 5-star reviews</p>
-</div>
-<!-- Issue 5: Added Create card with highlight and illustration -->
-<div class="card card--create">
-  <h2 class="card__title">Create and schedule content <em class="highlight">quicker.</em></h2>
-  <img src="./assets/images/illustration-create-post.webp" class="card__img card__img--create" />
+      <!-- Issue 4: Added Hero card with gradient background and stars image -->
+      <div class="card card--hero">
+        <h1 class="card__hero-title">
+          Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with AI
+        </h1>
+        <img src="./assets/images/illustration-five-stars.webp" class="card__img card__img--stars" />
+        <p class="card__hero-sub">Over 4,000 5-star reviews</p>
+      </div>
+      <!-- Issue 5: Added Create card with highlight and illustration -->
+      <div class="card card--create">
+        <h2 class="card__title">Create and schedule content <em class="highlight">quicker.</em></h2>
+        <img src="./assets/images/illustration-create-post.webp" class="card__img card__img--create" />
+      </div>
+
+      <!-- Issue 6: Added Write AI card with gradient and illustration -->
+      <div class="card card--write-ai">
+        <h2 class="card__title">Write your content using AI.</h2>
+        <img src="./assets/images/illustration-ai-content.webp" class="card__img card__img--ai" />
+      </div>
+
+      <!--Issue 7: Added Schedule Social and Manage cards with platforms  -->
+
+      <div class="card card--schedule-social">
+        <h2 class="card__title">Schedule to social media.</h2>
+        <img src="./assets/images/illustration-schedule-posts.webp" class="card__img card__img--schedule-posts" />
+        <p class="card__body">Optimize post timings to publish content at the perfect time for your audience.</p>
+      </div>
+
+      <div class="card card--manage">
+        <h2 class="card__title">Manage multiple accounts and platforms.</h2>
+        <div class="card__platforms">
+          <div class="platform-badge platform-badge--ig">IG: 12K Followers</div>
+          <div class="platform-badge platform-badge--x">X: 8K Followers</div>
+          <div class="platform-badge platform-badge--fb">FB: 5K Followers</div>
+        </div>
+      </div>
+
+<!-- Issue 8: Added Maintain, Growth Stat and Grow Followers cards -->
+
+<div class="card card--maintain">
+  <h2 class="card__title">Maintain a consistent posting schedule.</h2>
+  <img src="./assets/images/illustration-consistent-schedule.webp" class="card__img card__img--schedule" />
 </div>
 
-<!-- Issue 6: Added Write AI card with gradient and illustration -->
-<div class="card card--write-ai">
-  <h2 class="card__title">Write your content using AI.</h2>
-  <img src="./assets/images/illustration-ai-content.webp" class="card__img card__img--ai" />
+<div class="card card--growth-stat">
+  <p class="card__stat">&gt;56%</p>
+  <p class="card__stat-label">faster audience growth</p>
+  <img src="./assets/images/illustration-audience-growth.webp" class="card__img card__img--avatars" />
 </div>
 
-<!--Issue 7: Added Schedule Social and Manage cards with platforms  -->
-
-<div class="card card--schedule-social">
-  <h2 class="card__title">Schedule to social media.</h2>
-  <img src="./assets/images/illustration-schedule-posts.webp" class="card__img card__img--schedule-posts" />
-  <p class="card__body">Optimize post timings to publish content at the perfect time for your audience.</p>
-</div>
-
-<div class="card card--manage">
-  <h2 class="card__title">Manage multiple accounts and platforms.</h2>
-  <div class="card__platforms">
-    <div class="platform-badge platform-badge--ig">IG: 12K Followers</div>
-    <div class="platform-badge platform-badge--x">X: 8K Followers</div>
-    <div class="platform-badge platform-badge--fb">FB: 5K Followers</div>
-  </div>
+<div class="card card--grow">
+  <img src="./assets/images/illustration-grow-followers.webp" class="card__img card__img--grow" />
+  <h2 class="card__title">Grow followers with non-stop content.</h2>
 </div>
 
 
 
     </section>
-  
-   <footer class="attribution">
+
+    <footer class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>. Coded by
       <a href="https://www.upwork.com/freelancers/~01a2f97f4e3bb50a4c?companyReference=1864191587205410991&mp_source=share"
@@ -61,4 +81,5 @@
   </main>
 
 </body>
+
 </html>

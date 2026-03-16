@@ -266,3 +266,29 @@ img {
   gap: var(--space-2);
 }
 
+/* Issue 8: Added Maintain, Growth Stat and Grow Followers cards */
+
+.card--maintain {
+  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
+  border: none;
+  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+}
+
+.card--growth-stat {
+  text-align: center;
+}
+
+.card__stat {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: var(--fw-bold);
+  color: var(--clr-purple);
+}
+
+.card--grow {
+  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
