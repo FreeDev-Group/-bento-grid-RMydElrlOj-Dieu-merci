@@ -1,10 +1,10 @@
-# Frontend Mentor - Bento grid solution
+# Frontend Mentor - Bento Grid Solution
 
 This is a solution to the [Bento grid challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/bento-grid-RMydElrlOj). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
-- [Frontend Mentor - Bento grid solution](#frontend-mentor---bento-grid-solution)
+- [Frontend Mentor - Bento Grid Solution](#frontend-mentor---bento-grid-solution)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [The challenge](#the-challenge)
@@ -12,7 +12,8 @@ This is a solution to the [Bento grid challenge on Frontend Mentor](https://www.
     - [Links](#links)
   - [My process](#my-process)
     - [Built with](#built-with)
-  - [Author](#author)
+    - [What I learned](#what-i-learned)
+    - [CSS](#css)
 
 ## Overview
 
@@ -24,17 +25,16 @@ Users should be able to:
 
 ### Screenshot
 
-**Desktop Version**
-![Desktop Screenshot](./sceenshot-project-desktop.png)
+**Desktop Version**  
+![Desktop Screenshot](./screenshot-project-desktop.png)
 
-**Mobile Version**
-![Mobile Screenshot](./sceenshot-project-mobile.png)
+**Mobile Version**  
+![Mobile Screenshot](./screenshot-project-mobile.png)
 
 ### Links
 
-- Solution URL: [GitHub Repository](https://github.com/Mugisho-dev-metasploit/-Bento-grid-challenge-Frontend-Mentor-02)
-- Live Site URL: [Live Site Project](https://mugisho-dev-metasploit.github.io/-Bento-grid-challenge-Frontend-Mentor-02/)
-- my solution here:[my solution frontend mentor](https://www.frontendmentor.io/solutions/bento-grid-challenge-responsive-frontend-implementation-html-css-RR6kRA3_Bs)
+- Solution URL: [GitHub Repository](https://github.com/FreeDev-Group/-bento-grid-RMydElrlOj-Dieu-merci)
+- Live Site URL: [Live Site Project](https://freeDev-group.github.io/-bento-grid-RMydElrlOj-Dieu-merci/)
 
 ## My process
 
@@ -46,10 +46,26 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 
-## Author
+### What I learned
 
-- Nom - **Mugisho Ntashara**
-- Frontend Mentor - [Mugisho Ntashara Merci](https://www.frontendmentor.io)
-- Instagram - [@ir.mugisho_ntashara](https://www.instagram.com/ir.mugisho_ntashara/)
-- Facebook - [Mugisho Merci](https://www.facebook.com/mugisho.merci.2025)
-- Twitter/X - [@mugisho_merci](https://x.com/mugisho_merci?s=21)
+During this project, I focused on building a **responsive grid layout** and mastering **CSS Grid + Flexbox** combinations.  
+I also improved my **mobile-first workflow** and **hover animations for cards**, including shadows and transitions.
+
+Some CSS/JS snippets I’m proud of:
+
+### CSS
+
+````css
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(127, 64, 208, 0.15);
+  border-color: rgba(127, 64, 208, 0.2);
+}
+
+### HTML
+
+```html
+<div class="card card--hero">
+  <h1 class="card__hero-title">Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with AI</h1>
+</div>
+````
