@@ -34,6 +34,7 @@ Users should be able to:
 
 - Solution URL: [GitHub Repository](https://github.com/Mugisho-dev-metasploit/-Bento-grid-challenge-Frontend-Mentor-02)
 - Live Site URL: [Live Site Project](https://mugisho-dev-metasploit.github.io/-Bento-grid-challenge-Frontend-Mentor-02/)
+- my solution here:[my solution frontend mentor](https://www.frontendmentor.io/solutions/bento-grid-challenge-responsive-frontend-implementation-html-css-RR6kRA3_Bs)
 
 ## My process
 
