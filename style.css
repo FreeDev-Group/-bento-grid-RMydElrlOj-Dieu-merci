@@ -224,3 +224,21 @@ img {
   margin-inline: auto;
 }
 
+/* Issue 6: Added Write AI card with gradient and illustration */
+
+.card--write-ai {
+  background: linear-gradient(135deg, var(--clr-yellow) 0%, var(--clr-yellow-dark) 100%);
+  color: var(--clr-text);
+  border: none;
+  box-shadow: 0 10px 30px rgba(255, 200, 0, 0.2);
+}
+
+.card--write-ai:hover {
+  box-shadow: 0 16px 40px rgba(255, 200, 0, 0.3);
+}
+
+.card__img--ai {
+  width: clamp(140px, 40vw, 190px);
+  margin-inline: auto;
+}
+
