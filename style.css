@@ -1,6 +1,8 @@
 /* ======================================
    DESIGN TOKENS
 ====================================== */
+
+/* Issue 1: Initial setup with HTML skeleton and global CSS variables */
 :root {
   /* COLORS */
   --clr-purple: hsl(256, 67%, 59%);
@@ -79,3 +81,47 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+
+/* ======================================
+   APP CONTAINER
+====================================== */
+.app {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-3);
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 1024px) {
+  .app {
+    padding: clamp(3rem, 5vw, 5rem) var(--space-4);
+  }
+}
+
+/* Issue 2: Added responsive grid layout */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+}
+
