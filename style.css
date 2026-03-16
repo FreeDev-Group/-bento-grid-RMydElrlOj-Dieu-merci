@@ -1,0 +1,81 @@
+/* ======================================
+   DESIGN TOKENS
+====================================== */
+:root {
+  /* COLORS */
+  --clr-purple: hsl(256, 67%, 59%);
+  --clr-purple-dark: hsl(256, 67%, 45%);
+  --clr-purple-light: hsl(254, 88%, 90%);
+  --clr-yellow: hsl(39, 100%, 71%);
+  --clr-yellow-dark: hsl(39, 100%, 60%);
+  --clr-yellow-soft: hsl(31, 66%, 93%);
+  --clr-white: #ffffff;
+  --clr-bg: #f8f8f9;
+  --clr-text: #1a1a1a;
+  --clr-text-light: #666;
+  --clr-border: rgba(0, 0, 0, 0.08);
+
+  /* TYPOGRAPHY */
+  --fs-hero: clamp(2.5rem, 6vw, 4rem);
+  --fs-title: clamp(1.2rem, 2.5vw, 1.7rem);
+  --fs-body: 1.05rem;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* SPACING */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+
+  /* RADIUS */
+  --radius-card: 24px;
+  --radius-button: 10px;
+
+  /* SHADOWS (Improved design) */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 24px 48px rgba(127, 64, 208, 0.15);
+}
+
+/* ======================================
+   RESET & ANIMATIONS
+====================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: radial-gradient(circle at 50% -20%, #eceaf6 0%, var(--clr-bg) 70%);
+  color: var(--clr-text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
