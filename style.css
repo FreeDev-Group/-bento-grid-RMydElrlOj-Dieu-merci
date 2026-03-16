@@ -172,3 +172,37 @@ img {
   transform: scale(1.04) translateY(-2px);
 }
 
+/* Issue 4: Added Hero card with gradient background and stars image */
+
+.card--hero {
+  background: linear-gradient(135deg, var(--clr-purple) 0%, var(--clr-purple-dark) 100%);
+  color: white;
+  text-align: center;
+  align-items: center;
+  border: none;
+  min-height: 320px;
+  justify-content: center;
+}
+
+.card__hero-title {
+  font-size: var(--fs-hero);
+  font-weight: var(--fw-bold);
+}
+
+.highlight-yellow {
+  color: var(--clr-yellow);
+  font-weight: var(--fw-bold);
+}
+
+.card__hero-sub {
+  margin-top: var(--space-2);
+  font-size: 1.1rem;
+  opacity: 0.95;
+  font-weight: var(--fw-medium);
+}
+
+.card__img--stars {
+  width: 180px;
+  margin-block: var(--space-2);
+}
+
