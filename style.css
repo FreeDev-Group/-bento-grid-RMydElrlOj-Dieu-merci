@@ -242,3 +242,27 @@ img {
   margin-inline: auto;
 }
 
+/* Issue 7: Added Schedule Social and Manage cards with platforms */
+
+.card--schedule-social {
+  background: linear-gradient(135deg, #eaddff 0%, #f4efff 100%);
+  border: 1px solid rgba(127, 64, 208, 0.15);
+}
+
+.card__img--schedule-posts {
+  width: 100%;
+  max-width: 100%;
+}
+
+.card--manage {
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+}
+
+.card__platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
