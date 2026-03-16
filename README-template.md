@@ -14,6 +14,7 @@ This is a solution to the [Bento grid challenge on Frontend Mentor](https://www.
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
     - [CSS](#css)
+    - [HTML](#html)
 
 ## Overview
 
@@ -34,7 +35,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [GitHub Repository](https://github.com/FreeDev-Group/-bento-grid-RMydElrlOj-Dieu-merci)
-- Live Site URL: [Live Site Project](https://freeDev-group.github.io/-bento-grid-RMydElrlOj-Dieu-merci/)
+- Live Site URL: [Live Site Project](https://freedev-group.github.io/-bento-grid-RMydElrlOj-Dieu-merci/)
 
 ## My process
 
@@ -48,24 +49,27 @@ Users should be able to:
 
 ### What I learned
 
-During this project, I focused on building a **responsive grid layout** and mastering **CSS Grid + Flexbox** combinations.  
-I also improved my **mobile-first workflow** and **hover animations for cards**, including shadows and transitions.
+During this project, I focused on building a **responsive grid layout** and mastering **CSS Grid + Flexbox** combinations. I also improved my **mobile-first workflow** and **hover animations for cards**, including shadows and transitions.
 
-Some CSS/JS snippets I’m proud of:
+Some CSS/HTML snippets I’m proud of:
 
 ### CSS
 
-````css
+```css
 .card:hover {
   transform: translateY(-6px);
   box-shadow: 0 24px 48px rgba(127, 64, 208, 0.15);
   border-color: rgba(127, 64, 208, 0.2);
 }
+```
 
 ### HTML
 
 ```html
 <div class="card card--hero">
-  <h1 class="card__hero-title">Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with AI</h1>
+  <h1 class="card__hero-title">
+    Social Media <span class="highlight-yellow">10x</span> <em>Faster</em> with
+    AI
+  </h1>
 </div>
-````
+```
